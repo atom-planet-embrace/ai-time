@@ -30,7 +30,7 @@ rustdoc-args = ["--generate-link-to-definition"]
 bench = false
 
 [features]
-default = ["std"]
+default = []
 alloc = ["serde_core?/alloc"]
 formatting = ["dep:itoa", "dep:libm", "dep:no_std_io", "alloc", "ai-time-macros?/formatting"]
 large-dates = ["ai-time-core/large-dates", "ai-time-macros?/large-dates"]

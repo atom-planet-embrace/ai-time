@@ -185,9 +185,8 @@ jobs:
       - *checkout
       - *cache
       - *toolchain-stable
-      # Test with default feature set to prevent #735 from happening again.
       - name: Doc test
-        run: cargo test -p ai-time --doc
+        run: cargo test -p ai-time --doc --all-features
 
   miri:
     name: Test (miri)
@@ -232,8 +231,6 @@ jobs:
       - name: Build no_std with parsing
         run: cargo build -p ai-time --target thumbv7m-none-eabi --no-default-features --features parsing
 
-      - name: Check default features
-        run: cargo check -p ai-time
 
   cross-build:
     name: Cross-build
