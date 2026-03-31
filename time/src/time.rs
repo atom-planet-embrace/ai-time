@@ -609,7 +609,7 @@ impl Time {
         )
     }
 
-    /// Add the sub-day time of the [`std::time::Duration`] to the `Time`. Wraps on overflow,
+    /// Add the sub-day time of the [`core::time::Duration`] to the `Time`. Wraps on overflow,
     /// returning whether the date is the previous date as the first element of the tuple.
     #[inline]
     pub(crate) const fn adjusting_add_std(self, duration: StdDuration) -> (bool, Self) {
@@ -638,7 +638,7 @@ impl Time {
         )
     }
 
-    /// Subtract the sub-day time of the [`std::time::Duration`] to the `Time`. Wraps on overflow,
+    /// Subtract the sub-day time of the [`core::time::Duration`] to the `Time`. Wraps on overflow,
     /// returning whether the date is the previous date as the first element of the tuple.
     #[inline]
     pub(crate) const fn adjusting_sub_std(self, duration: StdDuration) -> (bool, Self) {
@@ -1046,7 +1046,7 @@ impl AddAssign<Duration> for Time {
 impl Add<StdDuration> for Time {
     type Output = Self;
 
-    /// Add the sub-day time of the [`std::time::Duration`] to the `Time`. Wraps on overflow.
+    /// Add the sub-day time of the [`core::time::Duration`] to the `Time`. Wraps on overflow.
     ///
     /// ```rust
     /// # use ai_time::ext::NumericalStdDuration;
@@ -1094,7 +1094,7 @@ impl SubAssign<Duration> for Time {
 impl Sub<StdDuration> for Time {
     type Output = Self;
 
-    /// Subtract the sub-day time of the [`std::time::Duration`] from the `Time`. Wraps on overflow.
+    /// Subtract the sub-day time of the [`core::time::Duration`] from the `Time`. Wraps on overflow.
     ///
     /// ```rust
     /// # use ai_time::ext::NumericalStdDuration;

@@ -151,9 +151,9 @@ impl Sub for Instant {
             Ordering::Equal => Duration::ZERO,
             Ordering::Greater => (self.0 - other.0)
                 .try_into()
-                .expect("overflow converting `std::time::Duration` to `ai_time::Duration`"),
+                .expect("overflow converting `core::time::Duration` to `ai_time::Duration`"),
             Ordering::Less => -Duration::try_from(other.0 - self.0)
-                .expect("overflow converting `std::time::Duration` to `ai_time::Duration`"),
+                .expect("overflow converting `core::time::Duration` to `ai_time::Duration`"),
         }
     }
 }

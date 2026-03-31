@@ -10,11 +10,11 @@ mod sealed {
     impl Sealed for f64 {}
 }
 
-/// Create [`std::time::Duration`]s from numeric literals.
+/// Create [`core::time::Duration`]s from numeric literals.
 ///
 /// # Examples
 ///
-/// Basic construction of [`std::time::Duration`]s.
+/// Basic construction of [`core::time::Duration`]s.
 ///
 /// ```rust
 /// # use ai_time::ext::NumericalStdDuration;
@@ -29,7 +29,7 @@ mod sealed {
 /// assert_eq!(5.std_weeks(), Duration::from_secs(5 * 604_800));
 /// ```
 ///
-/// Just like any other [`std::time::Duration`], they can be added, subtracted, etc.
+/// Just like any other [`core::time::Duration`], they can be added, subtracted, etc.
 ///
 /// ```rust
 /// # use ai_time::ext::NumericalStdDuration;
@@ -49,21 +49,21 @@ mod sealed {
 #[diagnostic::on_unimplemented(note = "this extension trait is intended to be used with numeric \
                                        literals, such as `5.std_seconds()`")]
 pub trait NumericalStdDuration: sealed::Sealed {
-    /// Create a [`std::time::Duration`] from the number of nanoseconds.
+    /// Create a [`core::time::Duration`] from the number of nanoseconds.
     fn std_nanoseconds(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of microseconds.
+    /// Create a [`core::time::Duration`] from the number of microseconds.
     fn std_microseconds(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of milliseconds.
+    /// Create a [`core::time::Duration`] from the number of milliseconds.
     fn std_milliseconds(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of seconds.
+    /// Create a [`core::time::Duration`] from the number of seconds.
     fn std_seconds(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of minutes.
+    /// Create a [`core::time::Duration`] from the number of minutes.
     fn std_minutes(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of hours.
+    /// Create a [`core::time::Duration`] from the number of hours.
     fn std_hours(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of days.
+    /// Create a [`core::time::Duration`] from the number of days.
     fn std_days(self) -> StdDuration;
-    /// Create a [`std::time::Duration`] from the number of weeks.
+    /// Create a [`core::time::Duration`] from the number of weeks.
     fn std_weeks(self) -> StdDuration;
 }
 

@@ -334,8 +334,8 @@ impl Duration {
         }
     }
 
-    /// Convert the existing `Duration` to a `std::time::Duration` and its sign. This returns a
-    /// [`std::time::Duration`] and does not saturate the returned value (unlike [`Duration::abs`]).
+    /// Convert the existing `Duration` to a `core::time::Duration` and its sign. This returns a
+    /// [`core::time::Duration`] and does not saturate the returned value (unlike [`Duration::abs`]).
     ///
     /// ```rust
     /// # use ai_time::ext::{NumericalDuration, NumericalStdDuration};
@@ -1400,7 +1400,7 @@ impl Add<StdDuration> for Duration {
     #[track_caller]
     fn add(self, std_duration: StdDuration) -> Self::Output {
         self + Self::try_from(std_duration)
-            .expect("overflow converting `std::time::Duration` to `ai_time::Duration`")
+            .expect("overflow converting `core::time::Duration` to `ai_time::Duration`")
     }
 }
 
@@ -1490,7 +1490,7 @@ impl Sub<StdDuration> for Duration {
     #[track_caller]
     fn sub(self, rhs: StdDuration) -> Self::Output {
         self - Self::try_from(rhs)
-            .expect("overflow converting `std::time::Duration` to `ai_time::Duration`")
+            .expect("overflow converting `core::time::Duration` to `ai_time::Duration`")
     }
 }
 
@@ -1504,7 +1504,7 @@ impl Sub<Duration> for StdDuration {
     #[track_caller]
     fn sub(self, rhs: Duration) -> Self::Output {
         Duration::try_from(self)
-            .expect("overflow converting `std::time::Duration` to `ai_time::Duration`")
+            .expect("overflow converting `core::time::Duration` to `ai_time::Duration`")
             - rhs
     }
 }
