@@ -7,9 +7,9 @@ use core::fmt;
 use core::hash::{Hash, Hasher};
 use core::ops::{Add, AddAssign, Sub, SubAssign};
 use core::time::Duration as StdDuration;
+
 #[cfg(feature = "formatting")]
 use no_std_io::io;
-
 use powerfmt::ext::FormatterExt as _;
 use powerfmt::smart_display::{self, FormatterOptions, Metadata, SmartDisplay};
 

@@ -6,10 +6,10 @@ use core::cmp::Ordering;
 use core::fmt;
 use core::hash::{Hash, Hasher};
 use core::ops::Neg;
-#[cfg(feature = "formatting")]
-use no_std_io::io;
 
 use deranged::{RangedI8, RangedI32};
+#[cfg(feature = "formatting")]
+use no_std_io::io;
 use powerfmt::ext::FormatterExt;
 use powerfmt::smart_display::{self, FormatterOptions, Metadata, SmartDisplay};
 

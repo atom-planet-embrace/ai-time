@@ -7,10 +7,10 @@ use core::hash::{Hash, Hasher};
 use core::ops::{Add, AddAssign, Sub, SubAssign};
 use core::time::Duration as StdDuration;
 use core::{fmt, hint};
-#[cfg(feature = "formatting")]
-use no_std_io::io;
 
 use deranged::{RangedU8, RangedU32};
+#[cfg(feature = "formatting")]
+use no_std_io::io;
 use num_conv::prelude::*;
 use powerfmt::ext::FormatterExt;
 use powerfmt::smart_display::{self, FormatterOptions, Metadata, SmartDisplay};
@@ -1094,7 +1094,8 @@ impl SubAssign<Duration> for Time {
 impl Sub<StdDuration> for Time {
     type Output = Self;
 
-    /// Subtract the sub-day time of the [`core::time::Duration`] from the `Time`. Wraps on overflow.
+    /// Subtract the sub-day time of the [`core::time::Duration`] from the `Time`. Wraps on
+    /// overflow.
     ///
     /// ```rust
     /// # use ai_time::ext::NumericalStdDuration;

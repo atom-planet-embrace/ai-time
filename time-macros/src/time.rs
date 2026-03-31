@@ -1,7 +1,7 @@
 use core::iter::Peekable;
 
-use proc_macro::{Span, TokenStream, token_stream};
 use ai_time_core::convert::*;
+use proc_macro::{Span, TokenStream, token_stream};
 
 use crate::Error;
 use crate::helpers::{consume_any_ident, consume_number, consume_punct};

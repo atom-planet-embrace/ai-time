@@ -26,9 +26,6 @@ mod visitor;
 use alloc::string::ToString;
 use core::marker::PhantomData;
 
-#[cfg(feature = "serde-human-readable")]
-use serde_core::ser::Error as _;
-use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// Generate a custom serializer and deserializer from a format string or an existing format.
 ///
 /// The syntax accepted by this macro is the same as [`format_description::parse()`], which can
@@ -212,6 +209,9 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// [`format_description::parse()`]: crate::format_description::parse()
 #[cfg(all(feature = "macros", any(feature = "formatting", feature = "parsing")))]
 pub use ai_time_macros::serde_format_description as format_description;
+#[cfg(feature = "serde-human-readable")]
+use serde_core::ser::Error as _;
+use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 
 use self::visitor::Visitor;
 #[cfg(feature = "parsing")]

@@ -5,8 +5,8 @@ pub(crate) mod formattable;
 mod iso8601;
 
 use core::num::NonZero;
-use no_std_io::io;
 
+use no_std_io::io;
 use num_conv::prelude::*;
 
 use self::component_provider::ComponentProvider;

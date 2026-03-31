@@ -335,7 +335,8 @@ impl Duration {
     }
 
     /// Convert the existing `Duration` to a `core::time::Duration` and its sign. This returns a
-    /// [`core::time::Duration`] and does not saturate the returned value (unlike [`Duration::abs`]).
+    /// [`core::time::Duration`] and does not saturate the returned value (unlike
+    /// [`Duration::abs`]).
     ///
     /// ```rust
     /// # use ai_time::ext::{NumericalDuration, NumericalStdDuration};

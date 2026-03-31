@@ -1,8 +1,8 @@
 use core::iter::Peekable;
 
+use ai_time_core::util::{days_in_year, weeks_in_year};
 use num_conv::Truncate;
 use proc_macro::token_stream;
-use ai_time_core::util::{days_in_year, weeks_in_year};
 
 use crate::Error;
 use crate::helpers::{consume_number, consume_punct, days_in_year_month, ymd_to_yo, ywd_to_yo};

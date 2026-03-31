@@ -147,7 +147,9 @@ pub(crate) fn build(
         }
         (false, true) => quote_! { ::ai_time::parsing::Parsable },
         (true, false) => quote_! { ::ai_time::formatting::Formattable },
-        (true, true) => quote_! { ::ai_time::formatting::Formattable + ::ai_time::parsing::Parsable },
+        (true, true) => {
+            quote_! { ::ai_time::formatting::Formattable + ::ai_time::parsing::Parsable }
+        }
     };
 
     quote_! {

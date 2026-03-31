@@ -6,10 +6,10 @@ use core::num::NonZero;
 use core::ops::{Add, AddAssign, Sub, SubAssign};
 use core::time::Duration as StdDuration;
 use core::{cmp, fmt};
-#[cfg(feature = "formatting")]
-use no_std_io::io;
 
 use deranged::RangedI32;
+#[cfg(feature = "formatting")]
+use no_std_io::io;
 use num_conv::prelude::*;
 use powerfmt::ext::FormatterExt;
 use powerfmt::smart_display::{self, FormatterOptions, Metadata, SmartDisplay};

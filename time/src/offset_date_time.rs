@@ -7,14 +7,14 @@ use core::fmt;
 use core::hash::{Hash, Hasher};
 use core::ops::{Add, AddAssign, Sub, SubAssign};
 use core::time::Duration as StdDuration;
+
+use ai_time_core::convert::*;
+use deranged::RangedI64;
 #[cfg(feature = "formatting")]
 use no_std_io::io;
-
-use deranged::RangedI64;
 use num_conv::prelude::*;
 use powerfmt::ext::FormatterExt as _;
 use powerfmt::smart_display::{self, FormatterOptions, Metadata, SmartDisplay};
-use ai_time_core::convert::*;
 
 use crate::date::{MAX_YEAR, MIN_YEAR};
 #[cfg(feature = "formatting")]
