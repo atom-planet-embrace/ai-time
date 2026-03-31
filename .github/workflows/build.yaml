@@ -325,19 +325,3 @@ jobs:
         run: cargo doc --workspace --all-features --no-deps
         env:
           RUSTDOCFLAGS: --cfg docsrs
-
-  publish-documentation:
-    name: Publish docs
-    needs:
-      - documentation
-      - check-targets
-      - check-benchmarks
-      - test
-      - cross-build
-      - fmt
-      - clippy
-    if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.master_branch)
-    uses: atom-planet-embrace/atom-planet-embrace.github.io/.github/workflows/trigger-deploy.yaml@main
-    secrets: inherit
-    permissions:
-      actions: write
