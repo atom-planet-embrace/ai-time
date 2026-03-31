@@ -10,7 +10,7 @@ mod sealed {
 }
 
 /// An extension trait for [`std::time::Instant`] that adds methods for
-/// [`time::Duration`](Duration)s.
+/// [`ai_time::Duration`](Duration)s.
 pub trait InstantExt: sealed::Sealed {
     /// # Panics
     ///
@@ -54,7 +54,7 @@ pub trait InstantExt: sealed::Sealed {
     /// ```rust
     /// # use std::thread::sleep;
     /// # use std::time::{Duration, Instant};
-    /// # use time::ext::InstantExt;
+    /// # use ai_time::ext::InstantExt;
     /// let now = Instant::now();
     /// sleep(Duration::new(1, 0));
     /// let new_now = Instant::now();

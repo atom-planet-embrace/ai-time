@@ -17,7 +17,7 @@ mod sealed {
 /// Basic construction of [`std::time::Duration`]s.
 ///
 /// ```rust
-/// # use time::ext::NumericalStdDuration;
+/// # use ai_time::ext::NumericalStdDuration;
 /// # use core::time::Duration;
 /// assert_eq!(5.std_nanoseconds(), Duration::from_nanos(5));
 /// assert_eq!(5.std_microseconds(), Duration::from_micros(5));
@@ -32,7 +32,7 @@ mod sealed {
 /// Just like any other [`std::time::Duration`], they can be added, subtracted, etc.
 ///
 /// ```rust
-/// # use time::ext::NumericalStdDuration;
+/// # use ai_time::ext::NumericalStdDuration;
 /// assert_eq!(
 ///     2.std_seconds() + 500.std_milliseconds(),
 ///     2_500.std_milliseconds()
@@ -96,7 +96,7 @@ impl NumericalStdDuration for u64 {
     fn std_minutes(self) -> StdDuration {
         StdDuration::from_secs(
             self.checked_mul(Second::per_t(Minute))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
@@ -108,7 +108,7 @@ impl NumericalStdDuration for u64 {
     fn std_hours(self) -> StdDuration {
         StdDuration::from_secs(
             self.checked_mul(Second::per_t(Hour))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
@@ -120,7 +120,7 @@ impl NumericalStdDuration for u64 {
     fn std_days(self) -> StdDuration {
         StdDuration::from_secs(
             self.checked_mul(Second::per_t(Day))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
@@ -132,7 +132,7 @@ impl NumericalStdDuration for u64 {
     fn std_weeks(self) -> StdDuration {
         StdDuration::from_secs(
             self.checked_mul(Second::per_t(Week))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 }

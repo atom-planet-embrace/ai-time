@@ -1,4 +1,4 @@
-use time::macros::offset;
+use ai_time::macros::offset;
 
 fn main() {
     let _ = offset!(+26);

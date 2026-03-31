@@ -1,4 +1,4 @@
-use time::macros::time;
+use ai_time::macros::time;
 
 fn main() {
     let _ = time!(24:00);

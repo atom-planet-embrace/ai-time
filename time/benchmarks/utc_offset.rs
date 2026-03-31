@@ -1,5 +1,5 @@
 use criterion::Bencher;
-use time::{OffsetDateTime, UtcOffset};
+use ai_time::{OffsetDateTime, UtcOffset};
 
 setup_benchmark! {
     "UtcOffset",

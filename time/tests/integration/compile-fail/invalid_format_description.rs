@@ -1,4 +1,4 @@
-use time::macros::format_description;
+use ai_time::macros::format_description;
 
 fn main() {
     let _ = format_description!();

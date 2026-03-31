@@ -2,14 +2,14 @@ use std::cmp::Ordering;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::Hash;
 
-use time::error::{self, ConversionRange, IndeterminateOffset, TryFromParsed};
-use time::ext::NumericalDuration;
-use time::format_description::{self, modifier, well_known, Component, BorrowedFormatItem, OwnedFormatItem};
-use time::macros::{date, offset, time, utc_datetime, datetime};
-use time::parsing::Parsed;
-use time::{Duration, Error, Month, Time, Weekday};
+use ai_time::error::{self, ConversionRange, IndeterminateOffset, TryFromParsed};
+use ai_time::ext::NumericalDuration;
+use ai_time::format_description::{self, modifier, well_known, Component, BorrowedFormatItem, OwnedFormatItem};
+use ai_time::macros::{date, offset, time, utc_datetime, datetime};
+use ai_time::parsing::Parsed;
+use ai_time::{Duration, Error, Month, Time, Weekday};
 #[expect(deprecated)]
-use time::Instant;
+use ai_time::Instant;
 
 macro_rules! assert_cloned_eq {
     ($x:expr) => {

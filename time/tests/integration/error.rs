@@ -1,13 +1,13 @@
 use std::error::Error as _;
 use std::io;
 
-use time::error::{
+use ai_time::error::{
     ComponentRange, ConversionRange, DifferentVariant, Error, Format, IndeterminateOffset,
     InvalidFormatDescription, InvalidVariant, Parse, ParseFromDescription, TryFromParsed,
 };
-use time::macros::format_description;
-use time::parsing::Parsed;
-use time::{Date, Time, format_description};
+use ai_time::macros::format_description;
+use ai_time::parsing::Parsed;
+use ai_time::{Date, Time, format_description};
 
 macro_rules! assert_display_eq {
     ($a:expr, $b:expr $(,)?) => {

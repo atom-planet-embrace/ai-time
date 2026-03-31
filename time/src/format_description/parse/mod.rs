@@ -30,7 +30,7 @@ mod strftime;
 /// Parse a sequence of items from the format description.
 ///
 /// The syntax for the format description can be found in [the
-/// book](https://time-rs.github.io/book/api/format-description.html).
+/// book](https://atom-planet-embrace.github.io/book/api/format-description.html).
 ///
 /// This function exists for backward compatibility reasons. It is equivalent to calling
 /// `parse_borrowed::<1>(s)`. In the future, this function will be deprecated in favor of
@@ -45,7 +45,7 @@ pub fn parse(
 /// Parse a sequence of items from the format description.
 ///
 /// The syntax for the format description can be found in [the
-/// book](https://time-rs.github.io/book/api/format-description.html). The version of the format
+/// book](https://atom-planet-embrace.github.io/book/api/format-description.html). The version of the format
 /// description is provided as the const parameter. **It is recommended to use version 2.**
 #[inline]
 pub fn parse_borrowed<const VERSION: usize>(
@@ -63,7 +63,7 @@ pub fn parse_borrowed<const VERSION: usize>(
 /// Parse a sequence of items from the format description.
 ///
 /// The syntax for the format description can be found in [the
-/// book](https://time-rs.github.io/book/api/format-description.html). The version of the format
+/// book](https://atom-planet-embrace.github.io/book/api/format-description.html). The version of the format
 /// description is provided as the const parameter.
 ///
 /// Unlike [`parse`], this function returns [`OwnedFormatItem`], which owns its contents. This means

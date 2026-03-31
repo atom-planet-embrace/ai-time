@@ -1,4 +1,4 @@
-use time::macros::datetime;
+use ai_time::macros::datetime;
 
 fn main() {
     let _ = datetime!(2021-000 0:00);

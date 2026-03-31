@@ -5,7 +5,7 @@
 //! ```ignore
 //! # #![expect(dead_code)]
 //! use quickcheck::quickcheck;
-//! use time::Date;
+//! use ai_time::Date;
 //!
 //! struct DateRange {
 //!     from: Date,

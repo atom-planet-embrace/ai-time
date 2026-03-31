@@ -3,7 +3,7 @@ mod imp;
 
 /// Update time zone information from the system.
 ///
-/// For safety documentation, see [`time::util::refresh_tz`].
+/// For safety documentation, see [`ai_time::util::refresh_tz`].
 #[inline]
 pub(crate) unsafe fn refresh_tz_unchecked() {
     // Safety: The caller must uphold the safety requirements.

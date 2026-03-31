@@ -127,13 +127,13 @@ impl Date {
     /// Attempt to create a `Date` from the year, month, and day.
     ///
     /// ```rust
-    /// # use time::{Date, Month};
+    /// # use ai_time::{Date, Month};
     /// assert!(Date::from_calendar_date(2019, Month::January, 1).is_ok());
     /// assert!(Date::from_calendar_date(2019, Month::December, 31).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::{Date, Month};
+    /// # use ai_time::{Date, Month};
     /// assert!(Date::from_calendar_date(2019, Month::February, 29).is_err()); // 2019 isn't a leap year.
     /// ```
     #[inline]
@@ -173,13 +173,13 @@ impl Date {
     /// Attempt to create a `Date` from the year and ordinal day number.
     ///
     /// ```rust
-    /// # use time::Date;
+    /// # use ai_time::Date;
     /// assert!(Date::from_ordinal_date(2019, 1).is_ok());
     /// assert!(Date::from_ordinal_date(2019, 365).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::Date;
+    /// # use ai_time::Date;
     /// assert!(Date::from_ordinal_date(2019, 366).is_err()); // 2019 isn't a leap year.
     /// ```
     #[inline]
@@ -203,14 +203,14 @@ impl Date {
     /// Attempt to create a `Date` from the ISO year, week, and weekday.
     ///
     /// ```rust
-    /// # use time::{Date, Weekday::*};
+    /// # use ai_time::{Date, Weekday::*};
     /// assert!(Date::from_iso_week_date(2019, 1, Monday).is_ok());
     /// assert!(Date::from_iso_week_date(2019, 1, Tuesday).is_ok());
     /// assert!(Date::from_iso_week_date(2020, 53, Friday).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::{Date, Weekday::*};
+    /// # use ai_time::{Date, Weekday::*};
     /// assert!(Date::from_iso_week_date(2019, 53, Monday).is_err()); // 2019 doesn't have 53 weeks.
     /// ```
     pub const fn from_iso_week_date(
@@ -269,8 +269,8 @@ impl Date {
     /// Create a `Date` from the Julian day.
     ///
     /// ```rust
-    /// # use time::Date;
-    /// # use time_macros::date;
+    /// # use ai_time::Date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::from_julian_day(0), Ok(date!(-4713-11-24)));
     /// assert_eq!(Date::from_julian_day(2_451_545), Ok(date!(2000-01-01)));
     /// assert_eq!(Date::from_julian_day(2_458_485), Ok(date!(2019-01-01)));
@@ -337,7 +337,7 @@ impl Date {
     /// Get the year of the date.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).year(), 2019);
     /// assert_eq!(date!(2019-12-31).year(), 2019);
     /// assert_eq!(date!(2020-01-01).year(), 2020);
@@ -350,8 +350,8 @@ impl Date {
     /// Get the month.
     ///
     /// ```rust
-    /// # use time::Month;
-    /// # use time_macros::date;
+    /// # use ai_time::Month;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).month(), Month::January);
     /// assert_eq!(date!(2019-12-31).month(), Month::December);
     /// ```
@@ -383,7 +383,7 @@ impl Date {
     /// The returned value will always be in the range `1..=31`.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).day(), 1);
     /// assert_eq!(date!(2019-12-31).day(), 31);
     /// ```
@@ -409,7 +409,7 @@ impl Date {
     /// The returned value will always be in the range `1..=366` (`1..=365` for common years).
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).ordinal(), 1);
     /// assert_eq!(date!(2019-12-31).ordinal(), 365);
     /// ```
@@ -435,7 +435,7 @@ impl Date {
     /// The returned value will always be in the range `1..=53`.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).iso_week(), 1);
     /// assert_eq!(date!(2019-10-04).iso_week(), 40);
     /// assert_eq!(date!(2020-01-01).iso_week(), 1);
@@ -452,7 +452,7 @@ impl Date {
     /// The returned value will always be in the range `0..=53`.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).sunday_based_week(), 0);
     /// assert_eq!(date!(2020-01-01).sunday_based_week(), 0);
     /// assert_eq!(date!(2020-12-31).sunday_based_week(), 52);
@@ -469,7 +469,7 @@ impl Date {
     /// The returned value will always be in the range `0..=53`.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).monday_based_week(), 0);
     /// assert_eq!(date!(2020-01-01).monday_based_week(), 0);
     /// assert_eq!(date!(2020-12-31).monday_based_week(), 52);
@@ -484,8 +484,8 @@ impl Date {
     /// Get the year, month, and day.
     ///
     /// ```rust
-    /// # use time::Month;
-    /// # use time_macros::date;
+    /// # use ai_time::Month;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2019-01-01).to_calendar_date(),
     ///     (2019, Month::January, 1)
@@ -525,7 +525,7 @@ impl Date {
     /// Get the year and ordinal day number.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).to_ordinal_date(), (2019, 1));
     /// ```
     #[inline]
@@ -536,8 +536,8 @@ impl Date {
     /// Get the ISO 8601 year, week number, and weekday.
     ///
     /// ```rust
-    /// # use time::Weekday::*;
-    /// # use time_macros::date;
+    /// # use ai_time::Weekday::*;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).to_iso_week_date(), (2019, 1, Tuesday));
     /// assert_eq!(date!(2019-10-04).to_iso_week_date(), (2019, 40, Friday));
     /// assert_eq!(date!(2020-01-01).to_iso_week_date(), (2020, 1, Wednesday));
@@ -559,8 +559,8 @@ impl Date {
     /// Get the weekday.
     ///
     /// ```rust
-    /// # use time::Weekday::*;
-    /// # use time_macros::date;
+    /// # use ai_time::Weekday::*;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).weekday(), Tuesday);
     /// assert_eq!(date!(2019-02-01).weekday(), Friday);
     /// assert_eq!(date!(2019-03-01).weekday(), Friday);
@@ -593,8 +593,8 @@ impl Date {
     /// Get the next calendar date.
     ///
     /// ```rust
-    /// # use time::Date;
-    /// # use time_macros::date;
+    /// # use ai_time::Date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-01).next_day(), Some(date!(2019-01-02)));
     /// assert_eq!(date!(2019-01-31).next_day(), Some(date!(2019-02-01)));
     /// assert_eq!(date!(2019-12-31).next_day(), Some(date!(2020-01-01)));
@@ -621,8 +621,8 @@ impl Date {
     /// Get the previous calendar date.
     ///
     /// ```rust
-    /// # use time::Date;
-    /// # use time_macros::date;
+    /// # use ai_time::Date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2019-01-02).previous_day(), Some(date!(2019-01-01)));
     /// assert_eq!(date!(2019-02-01).previous_day(), Some(date!(2019-01-31)));
     /// assert_eq!(date!(2020-01-01).previous_day(), Some(date!(2019-12-31)));
@@ -653,8 +653,8 @@ impl Date {
     ///
     /// # Examples
     /// ```
-    /// # use time::Weekday;
-    /// # use time_macros::date;
+    /// # use ai_time::Weekday;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2023-06-28).next_occurrence(Weekday::Monday),
     ///     date!(2023-07-03)
@@ -678,8 +678,8 @@ impl Date {
     ///
     /// # Examples
     /// ```
-    /// # use time::Weekday;
-    /// # use time_macros::date;
+    /// # use ai_time::Weekday;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2023-06-28).prev_occurrence(Weekday::Monday),
     ///     date!(2023-06-26)
@@ -703,8 +703,8 @@ impl Date {
     ///
     /// # Examples
     /// ```
-    /// # use time::Weekday;
-    /// # use time_macros::date;
+    /// # use ai_time::Weekday;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2023-06-25).nth_next_occurrence(Weekday::Monday, 5),
     ///     date!(2023-07-24)
@@ -728,8 +728,8 @@ impl Date {
     ///
     /// # Examples
     /// ```
-    /// # use time::Weekday;
-    /// # use time_macros::date;
+    /// # use ai_time::Weekday;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2023-06-27).nth_prev_occurrence(Weekday::Monday, 3),
     ///     date!(2023-06-12)
@@ -749,7 +749,7 @@ impl Date {
     /// Get the Julian day for the date.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(-4713-11-24).to_julian_day(), 0);
     /// assert_eq!(date!(2000-01-01).to_julian_day(), 2_451_545);
     /// assert_eq!(date!(2019-01-01).to_julian_day(), 2_458_485);
@@ -771,8 +771,8 @@ impl Date {
     /// Computes `self + duration`, returning `None` if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.checked_add(1.days()), None);
     /// assert_eq!(Date::MIN.checked_add((-2).days()), None);
     /// assert_eq!(
@@ -786,8 +786,8 @@ impl Date {
     /// This function only takes whole days into account.
     ///
     /// ```rust
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.checked_add(23.hours()), Some(Date::MAX));
     /// assert_eq!(Date::MIN.checked_add((-23).hours()), Some(Date::MIN));
     /// assert_eq!(
@@ -817,8 +817,8 @@ impl Date {
     /// Computes `self + duration`, returning `None` if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Date, ext::NumericalStdDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalStdDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.checked_add_std(1.std_days()), None);
     /// assert_eq!(
     ///     date!(2020-12-31).checked_add_std(2.std_days()),
@@ -831,8 +831,8 @@ impl Date {
     /// This function only takes whole days into account.
     ///
     /// ```rust
-    /// # use time::{Date, ext::NumericalStdDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalStdDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.checked_add_std(23.std_hours()), Some(Date::MAX));
     /// assert_eq!(
     ///     date!(2020-12-31).checked_add_std(23.std_hours()),
@@ -861,8 +861,8 @@ impl Date {
     /// Computes `self - duration`, returning `None` if an overflow occurred.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.checked_sub((-2).days()), None);
     /// assert_eq!(Date::MIN.checked_sub(1.days()), None);
     /// assert_eq!(
@@ -876,8 +876,8 @@ impl Date {
     /// This function only takes whole days into account.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.checked_sub((-23).hours()), Some(Date::MAX));
     /// assert_eq!(Date::MIN.checked_sub(23.hours()), Some(Date::MIN));
     /// assert_eq!(
@@ -907,8 +907,8 @@ impl Date {
     /// Computes `self - duration`, returning `None` if an overflow occurred.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalStdDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalStdDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MIN.checked_sub_std(1.std_days()), None);
     /// assert_eq!(
     ///     date!(2020-12-31).checked_sub_std(2.std_days()),
@@ -921,8 +921,8 @@ impl Date {
     /// This function only takes whole days into account.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalStdDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalStdDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MIN.checked_sub_std(23.std_hours()), Some(Date::MIN));
     /// assert_eq!(
     ///     date!(2020-12-31).checked_sub_std(23.std_hours()),
@@ -1015,8 +1015,8 @@ impl Date {
     /// Computes `self + duration`, saturating value on overflow.
     ///
     /// ```rust
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.saturating_add(1.days()), Date::MAX);
     /// assert_eq!(Date::MIN.saturating_add((-2).days()), Date::MIN);
     /// assert_eq!(
@@ -1030,8 +1030,8 @@ impl Date {
     /// This function only takes whole days into account.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::date;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2020-12-31).saturating_add(23.hours()),
     ///     date!(2020-12-31)
@@ -1056,8 +1056,8 @@ impl Date {
     /// Computes `self - duration`, saturating value on overflow.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::date;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::date;
     /// assert_eq!(Date::MAX.saturating_sub((-2).days()), Date::MAX);
     /// assert_eq!(Date::MIN.saturating_sub(1.days()), Date::MIN);
     /// assert_eq!(
@@ -1071,8 +1071,8 @@ impl Date {
     /// This function only takes whole days into account.
     ///
     /// ```
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::date;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2020-12-31).saturating_sub(23.hours()),
     ///     date!(2020-12-31)
@@ -1097,7 +1097,7 @@ impl Date {
     /// Replace the year. The month and day will be unchanged.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(
     ///     date!(2022-02-18).replace_year(2019),
     ///     Ok(date!(2019-02-18))
@@ -1145,8 +1145,8 @@ impl Date {
     /// Replace the month of the year.
     ///
     /// ```rust
-    /// # use time_macros::date;
-    /// # use time::Month;
+    /// # use ai_time_macros::date;
+    /// # use ai_time::Month;
     /// assert_eq!(
     ///     date!(2022-02-18).replace_month(Month::January),
     ///     Ok(date!(2022-01-18))
@@ -1198,7 +1198,7 @@ impl Date {
     /// Replace the day of the month.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2022-02-18).replace_day(1), Ok(date!(2022-02-01)));
     /// assert!(date!(2022-02-18).replace_day(0).is_err()); // 0 isn't a valid day
     /// assert!(date!(2022-02-18).replace_day(30).is_err()); // 30 isn't a valid day in February
@@ -1231,7 +1231,7 @@ impl Date {
     /// Replace the day of the year.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert_eq!(date!(2022-049).replace_ordinal(1), Ok(date!(2022-001)));
     /// assert!(date!(2022-049).replace_ordinal(0).is_err()); // 0 isn't a valid ordinal
     /// assert!(date!(2022-049).replace_ordinal(366).is_err()); // 2022 isn't a leap year
@@ -1260,7 +1260,7 @@ impl Date {
     /// to midnight.
     ///
     /// ```rust
-    /// # use time_macros::{date, datetime};
+    /// # use ai_time_macros::{date, datetime};
     /// assert_eq!(date!(1970-01-01).midnight(), datetime!(1970-01-01 0:00));
     /// ```
     #[inline]
@@ -1271,7 +1271,7 @@ impl Date {
     /// Create a [`PrimitiveDateTime`] using the existing date and the provided [`Time`].
     ///
     /// ```rust
-    /// # use time_macros::{date, datetime, time};
+    /// # use ai_time_macros::{date, datetime, time};
     /// assert_eq!(
     ///     date!(1970-01-01).with_time(time!(0:00)),
     ///     datetime!(1970-01-01 0:00),
@@ -1285,7 +1285,7 @@ impl Date {
     /// Attempt to create a [`PrimitiveDateTime`] using the existing date and the provided time.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert!(date!(1970-01-01).with_hms(0, 0, 0).is_ok());
     /// assert!(date!(1970-01-01).with_hms(24, 0, 0).is_err());
     /// ```
@@ -1305,7 +1305,7 @@ impl Date {
     /// Attempt to create a [`PrimitiveDateTime`] using the existing date and the provided time.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert!(date!(1970-01-01).with_hms_milli(0, 0, 0, 0).is_ok());
     /// assert!(date!(1970-01-01).with_hms_milli(24, 0, 0, 0).is_err());
     /// ```
@@ -1326,7 +1326,7 @@ impl Date {
     /// Attempt to create a [`PrimitiveDateTime`] using the existing date and the provided time.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert!(date!(1970-01-01).with_hms_micro(0, 0, 0, 0).is_ok());
     /// assert!(date!(1970-01-01).with_hms_micro(24, 0, 0, 0).is_err());
     /// ```
@@ -1347,7 +1347,7 @@ impl Date {
     /// Attempt to create a [`PrimitiveDateTime`] using the existing date and the provided time.
     ///
     /// ```rust
-    /// # use time_macros::date;
+    /// # use ai_time_macros::date;
     /// assert!(date!(1970-01-01).with_hms_nano(0, 0, 0, 0).is_ok());
     /// assert!(date!(1970-01-01).with_hms_nano(24, 0, 0, 0).is_err());
     /// ```
@@ -1381,11 +1381,11 @@ impl Date {
     /// Format the `Date` using the provided [format description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::{format_description};
-    /// # use time_macros::date;
+    /// # use ai_time::{format_description};
+    /// # use ai_time_macros::date;
     /// let format = format_description::parse("[year]-[month]-[day]")?;
     /// assert_eq!(date!(2020-01-02).format(&format)?, "2020-01-02");
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn format(self, format: &(impl Formattable + ?Sized)) -> Result<String, error::Format> {
@@ -1399,11 +1399,11 @@ impl Date {
     /// description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::Date;
-    /// # use time_macros::{date, format_description};
+    /// # use ai_time::Date;
+    /// # use ai_time_macros::{date, format_description};
     /// let format = format_description!("[year]-[month]-[day]");
     /// assert_eq!(Date::parse("2020-01-02", &format)?, date!(2020-01-02));
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn parse(

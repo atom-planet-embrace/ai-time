@@ -15,12 +15,12 @@ use rand08::distributions::{Distribution as DistributionRand08, Standard as Stan
 use rand09::distr::{Distribution as DistributionRand09, StandardUniform as StandardUniformRand09};
 use serde::{Deserialize, Serialize};
 #[expect(deprecated)]
-use time::Instant;
-use time::format_description::well_known::iso8601;
-use time::format_description::{BorrowedFormatItem, Component, modifier, well_known};
-use time::formatting::Formattable;
-use time::parsing::{Parsable, Parsed};
-use time::{
+use ai_time::Instant;
+use ai_time::format_description::well_known::iso8601;
+use ai_time::format_description::{BorrowedFormatItem, Component, modifier, well_known};
+use ai_time::formatting::Formattable;
+use ai_time::parsing::{Parsable, Parsed};
+use ai_time::{
     Date, Duration, Error, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcDateTime, UtcOffset,
     Weekday, error, ext,
 };

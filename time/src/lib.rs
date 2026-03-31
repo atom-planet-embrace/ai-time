@@ -130,7 +130,7 @@ mod utc_offset;
 pub mod util;
 mod weekday;
 
-pub use time_core::convert;
+pub use ai_time_core::convert;
 
 pub use crate::date::Date;
 pub use crate::duration::Duration;

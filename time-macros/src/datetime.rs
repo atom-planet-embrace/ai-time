@@ -41,7 +41,7 @@ impl ToTokenStream for DateTime {
         };
 
         quote_append! { ts
-            ::time::PrimitiveDateTime::new(
+            ::ai_time::PrimitiveDateTime::new(
                 #S(self.date),
                 #S(self.time),
             ) #S(maybe_offset)

@@ -4,35 +4,35 @@ use serde_test::{
     assert_de_tokens, assert_de_tokens_error, assert_ser_tokens_error, assert_tokens, Configure,
     Token,
 };
-use time::format_description::well_known::{iso8601, Iso8601};
-use time::format_description::BorrowedFormatItem;
-use time::macros::{date, datetime, offset, time};
-use time::{serde, Date, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset};
+use ai_time::format_description::well_known::{iso8601, Iso8601};
+use ai_time::format_description::BorrowedFormatItem;
+use ai_time::macros::{date, datetime, offset, time};
+use ai_time::{serde, Date, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset};
 
 // Not used in the tests, but ensures that the macro compiles.
 #[expect(dead_code)]
 const ISO_FORMAT: Iso8601<{ iso8601::Config::DEFAULT.encode() }> =
     Iso8601::<{ iso8601::Config::DEFAULT.encode() }>;
-time::serde::format_description!(my_format, OffsetDateTime, ISO_FORMAT);
-time::serde::format_description!(
+ai_time::serde::format_description!(my_format, OffsetDateTime, ISO_FORMAT);
+ai_time::serde::format_description!(
     my_format2,
     OffsetDateTime,
     Iso8601::<{ iso8601::Config::DEFAULT.encode() }>
 );
 
 mod nested {
-    time::serde::format_description!(
+    ai_time::serde::format_description!(
         pub(super) offset_dt_format,
         OffsetDateTime,
         "custom format: [year]-[month]-[day] [hour]:[minute]:[second] [offset_hour \
          sign:mandatory]:[offset_minute]"
     );
-    time::serde::format_description!(
+    ai_time::serde::format_description!(
         pub primitive_dt_format,
         PrimitiveDateTime,
         "custom format: [year]-[month]-[day] [hour]:[minute]:[second]"
     );
-    time::serde::format_description!(
+    ai_time::serde::format_description!(
         pub(in crate::serde::macros) time_format,
         Time,
         "custom format: [minute]:[second]"
@@ -46,12 +46,12 @@ serde::format_description!(
 );
 
 const TIME_FORMAT_ALT: &[BorrowedFormatItem<'_>] =
-    time::macros::format_description!("[hour]:[minute]");
+    ai_time::macros::format_description!("[hour]:[minute]");
 serde::format_description!(time_format_alt, Time, TIME_FORMAT_ALT);
 serde::format_description!(
     time_format_alt2,
     Time,
-    time::macros::format_description!("[hour]:[minute]")
+    ai_time::macros::format_description!("[hour]:[minute]")
 );
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]

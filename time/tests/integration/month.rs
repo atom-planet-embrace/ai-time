@@ -1,5 +1,5 @@
 use rstest::rstest;
-use time::Month::{self, *};
+use ai_time::Month::{self, *};
 
 #[rstest]
 #[case(January, December)]
@@ -131,8 +131,8 @@ fn display(#[case] month: Month, #[case] expected: &str) {
 #[case("October", Ok(October))]
 #[case("November", Ok(November))]
 #[case("December", Ok(December))]
-#[case("foo", Err(time::error::InvalidVariant))]
-fn from_str(#[case] s: &str, #[case] expected: Result<Month, time::error::InvalidVariant>) {
+#[case("foo", Err(ai_time::error::InvalidVariant))]
+fn from_str(#[case] s: &str, #[case] expected: Result<Month, ai_time::error::InvalidVariant>) {
     assert_eq!(s.parse::<Month>(), expected);
 }
 

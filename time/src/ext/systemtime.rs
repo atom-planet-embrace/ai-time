@@ -10,7 +10,7 @@ mod sealed {
 }
 
 /// An extension trait for [`std::time::SystemTime`] that adds methods for
-/// [`time::Duration`](Duration)s.
+/// [`ai_time::Duration`](Duration)s.
 pub trait SystemTimeExt: sealed::Sealed {
     /// Adds the given [`Duration`] to the [`SystemTime`], returning `None` is the result cannot be
     /// represented by the underlying data structure.
@@ -30,7 +30,7 @@ pub trait SystemTimeExt: sealed::Sealed {
     ///
     /// ```rust
     /// # use std::time::SystemTime;
-    /// # use time::ext::{NumericalDuration, SystemTimeExt};
+    /// # use ai_time::ext::{NumericalDuration, SystemTimeExt};
     /// let epoch = SystemTime::UNIX_EPOCH;
     /// let other = epoch + 1.seconds();
     /// assert_eq!(other.signed_duration_since(epoch), 1.seconds());

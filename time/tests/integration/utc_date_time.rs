@@ -1,9 +1,9 @@
 use std::cmp::Ordering;
 use std::time::{Duration as StdDuration, SystemTime};
 
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::{date, datetime, offset, time, utc_datetime};
-use time::{Duration, Month, OffsetDateTime, UtcDateTime, Weekday};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::{date, datetime, offset, time, utc_datetime};
+use ai_time::{Duration, Month, OffsetDateTime, UtcDateTime, Weekday};
 
 #[test]
 fn new() {

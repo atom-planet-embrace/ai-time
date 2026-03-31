@@ -1,14 +1,14 @@
 use std::io;
 use std::num::NonZero;
 
-use time::format_description::well_known::iso8601::{DateKind, OffsetPrecision, TimePrecision};
-use time::format_description::well_known::{Iso8601, Rfc2822, Rfc3339, iso8601};
-use time::format_description::{self, BorrowedFormatItem, OwnedFormatItem};
-use time::macros::{date, datetime, format_description as fd, offset, time, utc_datetime};
-use time::{OffsetDateTime, Time};
+use ai_time::format_description::well_known::iso8601::{DateKind, OffsetPrecision, TimePrecision};
+use ai_time::format_description::well_known::{Iso8601, Rfc2822, Rfc3339, iso8601};
+use ai_time::format_description::{self, BorrowedFormatItem, OwnedFormatItem};
+use ai_time::macros::{date, datetime, format_description as fd, offset, time, utc_datetime};
+use ai_time::{OffsetDateTime, Time};
 
 #[test]
-fn rfc_2822() -> time::Result<()> {
+fn rfc_2822() -> ai_time::Result<()> {
     assert_eq!(
         datetime!(2021-01-02 03:04:05 UTC).format(&Rfc2822)?,
         "Sat, 02 Jan 2021 03:04:05 +0000"
@@ -28,22 +28,22 @@ fn rfc_2822() -> time::Result<()> {
 
     assert!(matches!(
         datetime!(1885-01-01 01:01:01 UTC).format(&Rfc2822),
-        Err(time::error::Format::InvalidComponent("year"))
+        Err(ai_time::error::Format::InvalidComponent("year"))
     ));
     assert!(matches!(
         utc_datetime!(1885-01-01 01:01:01).format(&Rfc2822),
-        Err(time::error::Format::InvalidComponent("year"))
+        Err(ai_time::error::Format::InvalidComponent("year"))
     ));
     assert!(matches!(
         datetime!(2000-01-01 00:00:00 +00:00:01).format(&Rfc2822),
-        Err(time::error::Format::InvalidComponent("offset_second"))
+        Err(ai_time::error::Format::InvalidComponent("offset_second"))
     ));
 
     Ok(())
 }
 
 #[test]
-fn rfc_3339() -> time::Result<()> {
+fn rfc_3339() -> ai_time::Result<()> {
     assert_eq!(
         datetime!(2021-01-02 03:04:05 UTC).format(&Rfc3339)?,
         "2021-01-02T03:04:05Z"
@@ -95,18 +95,18 @@ fn rfc_3339() -> time::Result<()> {
 
     assert!(matches!(
         datetime!(-0001-01-01 0:00 UTC).format(&Rfc3339),
-        Err(time::error::Format::InvalidComponent("year"))
+        Err(ai_time::error::Format::InvalidComponent("year"))
     ));
     assert!(matches!(
         datetime!(0000-01-01 0:00 +00:00:01).format(&Rfc3339),
-        Err(time::error::Format::InvalidComponent("offset_second"))
+        Err(ai_time::error::Format::InvalidComponent("offset_second"))
     ));
 
     Ok(())
 }
 
 #[test]
-fn iso_8601() -> time::Result<()> {
+fn iso_8601() -> ai_time::Result<()> {
     macro_rules! assert_format_config {
         ($formatted:literal $(, $($config:tt)+)?) => {
             assert_eq!(
@@ -183,7 +183,7 @@ fn iso_8601() -> time::Result<()> {
 
     assert!(matches!(
         datetime!(+10_000-01-01 0:00 UTC).format(&Iso8601::DEFAULT),
-        Err(time::error::Format::InvalidComponent("year"))
+        Err(ai_time::error::Format::InvalidComponent("year"))
     ));
     assert!(matches!(
         datetime!(+10_000-W01-1 0:00 UTC).format(
@@ -195,7 +195,7 @@ fn iso_8601() -> time::Result<()> {
                 },
             >
         ),
-        Err(time::error::Format::InvalidComponent("year"))
+        Err(ai_time::error::Format::InvalidComponent("year"))
     ));
     assert!(matches!(
         datetime!(+10_000-001 0:00 UTC).format(
@@ -207,11 +207,11 @@ fn iso_8601() -> time::Result<()> {
                 },
             >
         ),
-        Err(time::error::Format::InvalidComponent("year"))
+        Err(ai_time::error::Format::InvalidComponent("year"))
     ));
     assert!(matches!(
         datetime!(2021-01-02 03:04:05 +0:00:01).format(&Iso8601::DEFAULT),
-        Err(time::error::Format::InvalidComponent("offset_second"))
+        Err(ai_time::error::Format::InvalidComponent("offset_second"))
     ));
     assert!(matches!(
         datetime!(2021-01-02 03:04:05 +0:01).format(
@@ -223,14 +223,14 @@ fn iso_8601() -> time::Result<()> {
                 },
             >
         ),
-        Err(time::error::Format::InvalidComponent("offset_minute"))
+        Err(ai_time::error::Format::InvalidComponent("offset_minute"))
     ));
 
     Ok(())
 }
 
 #[test]
-fn iso_8601_issue_678() -> time::Result<()> {
+fn iso_8601_issue_678() -> ai_time::Result<()> {
     macro_rules! assert_format_config {
         ($formatted:literal $(, $($config:tt)+)?) => {
             assert_eq!(
@@ -250,7 +250,7 @@ fn iso_8601_issue_678() -> time::Result<()> {
 }
 
 #[test]
-fn format_time() -> time::Result<()> {
+fn format_time() -> ai_time::Result<()> {
     let format_output = [
         (fd!("[hour]"), "13"),
         (fd!("[hour repr:12]"), "01"),
@@ -371,7 +371,7 @@ fn display_time() {
 }
 
 #[test]
-fn format_date() -> time::Result<()> {
+fn format_date() -> ai_time::Result<()> {
     let format_output = [
         (fd!("[day]"), "31"),
         (fd!("[month]"), "12"),
@@ -426,11 +426,11 @@ fn format_date() -> time::Result<()> {
 fn format_date_err() {
     assert!(matches!(
         date!(+10_000-01-01).format(fd!("[year range:standard]")),
-        Err(time::error::Format::ComponentRange(cr)) if cr.name() == "year"
+        Err(ai_time::error::Format::ComponentRange(cr)) if cr.name() == "year"
     ));
     assert!(matches!(
         date!(+10_000-01-01).format(fd!("[year repr:century range:standard]")),
-        Err(time::error::Format::ComponentRange(cr)) if cr.name() == "year"
+        Err(ai_time::error::Format::ComponentRange(cr)) if cr.name() == "year"
     ));
 }
 
@@ -448,7 +448,7 @@ fn display_date() {
 }
 
 #[test]
-fn format_offset() -> time::Result<()> {
+fn format_offset() -> ai_time::Result<()> {
     let value_format_output = [
         (
             offset!(+01:02:03),
@@ -512,7 +512,7 @@ fn display_offset() {
 }
 
 #[test]
-fn format_pdt() -> time::Result<()> {
+fn format_pdt() -> ai_time::Result<()> {
     let format_description = fd!("[year]-[month]-[day] [hour]:[minute]:[second].[subsecond]");
 
     assert_eq!(
@@ -550,7 +550,7 @@ fn display_pdt() {
 }
 
 #[test]
-fn format_odt() -> time::Result<()> {
+fn format_odt() -> ai_time::Result<()> {
     let format_description = format_description::parse(
         "[year]-[month]-[day] [hour]:[minute]:[second].[subsecond digits:1+] [offset_hour \
          sign:mandatory]:[offset_minute]:[offset_second]",
@@ -587,7 +587,7 @@ fn display_odt() {
 }
 
 #[test]
-fn format_udt() -> time::Result<()> {
+fn format_udt() -> ai_time::Result<()> {
     let format_description = fd!("[year]-[month]-[day] [hour]:[minute]:[second].[subsecond]");
 
     assert_eq!(
@@ -625,7 +625,7 @@ fn insufficient_type_information() {
     let assert_insufficient_type_information = |res| {
         assert!(matches!(
             res,
-            Err(time::error::Format::InsufficientTypeInformation { .. })
+            Err(ai_time::error::Format::InsufficientTypeInformation { .. })
         ));
     };
     assert_insufficient_type_information(Time::MIDNIGHT.format(fd!("[year]")));
@@ -636,7 +636,7 @@ fn insufficient_type_information() {
 
 #[expect(clippy::cognitive_complexity, reason = "all test the same thing")]
 #[test]
-fn failed_write() -> time::Result<()> {
+fn failed_write() -> ai_time::Result<()> {
     macro_rules! assert_err {
         ($val:expr, $format:expr) => {{
             let val = $val;
@@ -647,7 +647,7 @@ fn failed_write() -> time::Result<()> {
                 let res = val.format_into(&mut buf, &format);
                 assert!(matches!(
                     res,
-                    Err(time::error::Format::StdIo(e)) if e.kind() == io::ErrorKind::WriteZero)
+                    Err(ai_time::error::Format::StdIo(e)) if e.kind() == io::ErrorKind::WriteZero)
                 );
             }
         }};
@@ -785,7 +785,7 @@ fn failed_write() -> time::Result<()> {
 }
 
 #[test]
-fn first() -> time::Result<()> {
+fn first() -> ai_time::Result<()> {
     assert_eq!(Time::MIDNIGHT.format(&BorrowedFormatItem::First(&[]))?, "");
     assert_eq!(
         Time::MIDNIGHT.format(&BorrowedFormatItem::First(&[BorrowedFormatItem::Compound(
@@ -808,21 +808,21 @@ fn first() -> time::Result<()> {
 }
 
 #[test]
-fn ignore() -> time::Result<()> {
+fn ignore() -> ai_time::Result<()> {
     assert_eq!(Time::MIDNIGHT.format(fd!("[ignore count:2]"))?, "");
 
     Ok(())
 }
 
 #[test]
-fn end() -> time::Result<()> {
+fn end() -> ai_time::Result<()> {
     assert_eq!(Time::MIDNIGHT.format(fd!("[end]"))?, "");
 
     Ok(())
 }
 
 #[test]
-fn unix_timestamp() -> time::Result<()> {
+fn unix_timestamp() -> ai_time::Result<()> {
     let dt = datetime!(2009-02-13 23:31:30.123456789 UTC);
 
     assert_eq!(dt.format(&fd!("[unix_timestamp]"))?, "1234567890");

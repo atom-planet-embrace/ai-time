@@ -1,4 +1,4 @@
-use time::format_description::{modifier, BorrowedFormatItem, Component, OwnedFormatItem};
+use ai_time::format_description::{modifier, BorrowedFormatItem, Component, OwnedFormatItem};
 
 #[test]
 fn borrowed_format_item_component_conversions() {

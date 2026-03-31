@@ -1,7 +1,7 @@
 use std::hint::black_box;
 
 use criterion::Bencher;
-use time::macros::{offset, utc_datetime};
+use ai_time::macros::{offset, utc_datetime};
 
 setup_benchmark! {
     "UtcDateTime",

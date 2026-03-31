@@ -1,8 +1,8 @@
 use std::cmp::Ordering;
 
 use rstest::rstest;
-use time::macros::offset;
-use time::{OffsetDateTime, UtcOffset};
+use ai_time::macros::offset;
+use ai_time::{OffsetDateTime, UtcOffset};
 
 #[test]
 fn utc_is_zero() {

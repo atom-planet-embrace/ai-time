@@ -1,4 +1,4 @@
-use time::macros::utc_datetime;
+use ai_time::macros::utc_datetime;
 
 fn main() {
     let _ = utc_datetime!(2021-000 0:00);

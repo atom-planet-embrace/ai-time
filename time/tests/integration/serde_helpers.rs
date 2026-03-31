@@ -1,21 +1,21 @@
 use serde::{Deserialize, Serialize};
 use serde_test::{Token, assert_de_tokens_error, assert_ser_tokens_error, assert_tokens};
-use time::OffsetDateTime;
-use time::macros::datetime;
+use ai_time::OffsetDateTime;
+use ai_time::macros::datetime;
 
 #[test]
 fn success() {
     #[derive(Debug, PartialEq, Serialize, Deserialize)]
     struct Full(
-        #[serde(with = "time::serde::rfc2822")] OffsetDateTime,
-        #[serde(with = "time::serde::rfc2822::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::rfc2822::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::rfc3339")] OffsetDateTime,
-        #[serde(with = "time::serde::rfc3339::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::rfc3339::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::timestamp")] OffsetDateTime,
-        #[serde(with = "time::serde::timestamp::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::timestamp::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc2822")] OffsetDateTime,
+        #[serde(with = "ai_time::serde::rfc2822::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc2822::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc3339")] OffsetDateTime,
+        #[serde(with = "ai_time::serde::rfc3339::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc3339::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::timestamp")] OffsetDateTime,
+        #[serde(with = "ai_time::serde::timestamp::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::timestamp::option")] Option<OffsetDateTime>,
     );
 
     assert_tokens(
@@ -56,9 +56,9 @@ fn success() {
 fn rfc2822_error() {
     #[derive(Serialize, Deserialize)]
     struct Rfc2822(
-        #[serde(with = "time::serde::rfc2822")] OffsetDateTime,
-        #[serde(with = "time::serde::rfc2822::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::rfc2822::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc2822")] OffsetDateTime,
+        #[serde(with = "ai_time::serde::rfc2822::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc2822::option")] Option<OffsetDateTime>,
     );
 
     assert_ser_tokens_error(
@@ -127,9 +127,9 @@ fn rfc2822_error() {
 fn rfc3339_error() {
     #[derive(Serialize, Deserialize)]
     struct Rfc3339(
-        #[serde(with = "time::serde::rfc3339")] OffsetDateTime,
-        #[serde(with = "time::serde::rfc3339::option")] Option<OffsetDateTime>,
-        #[serde(with = "time::serde::rfc3339::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc3339")] OffsetDateTime,
+        #[serde(with = "ai_time::serde::rfc3339::option")] Option<OffsetDateTime>,
+        #[serde(with = "ai_time::serde::rfc3339::option")] Option<OffsetDateTime>,
     );
 
     assert_ser_tokens_error(
@@ -198,11 +198,11 @@ fn rfc3339_error() {
 fn timestamp_error() {
     #[derive(Serialize, Deserialize)]
     #[serde(transparent)]
-    struct Timestamp(#[serde(with = "time::serde::timestamp")] OffsetDateTime);
+    struct Timestamp(#[serde(with = "ai_time::serde::timestamp")] OffsetDateTime);
 
     #[derive(Serialize, Deserialize)]
     #[serde(transparent)]
-    struct OptTimestamp(#[serde(with = "time::serde::timestamp::option")] Option<OffsetDateTime>);
+    struct OptTimestamp(#[serde(with = "ai_time::serde::timestamp::option")] Option<OffsetDateTime>);
 
     assert_de_tokens_error::<Timestamp>(
         &[Token::Bool(false)],

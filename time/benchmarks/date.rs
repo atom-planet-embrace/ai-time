@@ -7,9 +7,9 @@ use std::hint::black_box as bb;
 use std::sync::LazyLock;
 
 use criterion::Bencher;
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::date;
-use time::{Date, Time};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::date;
+use ai_time::{Date, Time};
 
 /// Generate a representative sample of all dates.
 ///

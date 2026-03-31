@@ -18,7 +18,7 @@ const OS_HAS_THREAD_SAFE_ENVIRONMENT: bool = match std::env::consts::OS.as_bytes
 
 /// Update time zone information from the system.
 ///
-/// For safety documentation, see [`time::util::refresh_tz`].
+/// For safety documentation, see [`ai_time::util::refresh_tz`].
 #[inline]
 pub(super) unsafe fn refresh_tz_unchecked() {
     unsafe extern "C" {

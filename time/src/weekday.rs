@@ -34,7 +34,7 @@ impl Weekday {
     /// Get the previous weekday.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Tuesday.previous(), Weekday::Monday);
     /// ```
     #[inline]
@@ -53,7 +53,7 @@ impl Weekday {
     /// Get the next weekday.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.next(), Weekday::Tuesday);
     /// ```
     #[inline]
@@ -72,7 +72,7 @@ impl Weekday {
     /// Get n-th next day.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.nth_next(1), Weekday::Tuesday);
     /// assert_eq!(Weekday::Sunday.nth_next(10), Weekday::Wednesday);
     /// ```
@@ -95,7 +95,7 @@ impl Weekday {
     /// Get n-th previous day.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.nth_prev(1), Weekday::Sunday);
     /// assert_eq!(Weekday::Sunday.nth_prev(10), Weekday::Thursday);
     /// ```
@@ -118,7 +118,7 @@ impl Weekday {
     /// Get the one-indexed number of days from Monday.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.number_from_monday(), 1);
     /// ```
     #[doc(alias = "iso_weekday_number")]
@@ -130,7 +130,7 @@ impl Weekday {
     /// Get the one-indexed number of days from Sunday.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.number_from_sunday(), 2);
     /// ```
     #[inline]
@@ -141,7 +141,7 @@ impl Weekday {
     /// Get the zero-indexed number of days from Monday.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.number_days_from_monday(), 0);
     /// ```
     #[inline]
@@ -152,7 +152,7 @@ impl Weekday {
     /// Get the zero-indexed number of days from Sunday.
     ///
     /// ```rust
-    /// # use time::Weekday;
+    /// # use ai_time::Weekday;
     /// assert_eq!(Weekday::Monday.number_days_from_sunday(), 1);
     /// ```
     #[inline]

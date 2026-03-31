@@ -1,6 +1,6 @@
 use criterion::Bencher;
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::{datetime, offset};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::{datetime, offset};
 
 setup_benchmark! {
     "PrimitiveDateTime",

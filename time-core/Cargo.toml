@@ -1,10 +1,10 @@
 lints.workspace = true
 
 [package]
-name = "time-core"
+name = "ai-time-core"
 version = "0.1.8"
 categories = ["date-and-time"]
-description = "This crate is an implementation detail and should not be relied upon directly."
+description = "A no_std fork of time-core"
 
 authors.workspace = true
 edition.workspace = true

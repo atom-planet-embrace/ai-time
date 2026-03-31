@@ -1,9 +1,9 @@
 use serde::{Deserialize, Serialize, Serializer};
 use serde_test::{assert_ser_tokens_error, Token};
-use time::macros::{datetime, format_description};
-use time::{error, OffsetDateTime};
+use ai_time::macros::{datetime, format_description};
+use ai_time::{error, OffsetDateTime};
 
-/// Trigger `time::error::Format::StdIo` errors.
+/// Trigger `ai_time::error::Format::StdIo` errors.
 ///
 /// `StdIo` won't be reached during normal serde operation: it's instantiated
 /// only during calls to `format_into()`, but most `Serializable`

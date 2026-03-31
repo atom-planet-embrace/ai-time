@@ -1,9 +1,9 @@
 use std::num::NonZero;
 
-use time::format_description::modifier::{Hour, WeekNumber, WeekNumberRepr};
-use time::format_description::{BorrowedFormatItem, Component};
-use time::parsing::Parsed;
-use time::{Month, Time, Weekday, error};
+use ai_time::format_description::modifier::{Hour, WeekNumber, WeekNumberRepr};
+use ai_time::format_description::{BorrowedFormatItem, Component};
+use ai_time::parsing::Parsed;
+use ai_time::{Month, Time, Weekday, error};
 
 #[test]
 fn getters_setters() {

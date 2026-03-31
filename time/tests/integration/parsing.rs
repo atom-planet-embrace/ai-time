@@ -1,10 +1,10 @@
 use std::num::NonZero;
 
-use time::format_description::well_known::{Iso8601, Rfc2822, Rfc3339};
-use time::format_description::{BorrowedFormatItem, Component, OwnedFormatItem, modifier};
-use time::macros::{date, datetime, offset, time, utc_datetime};
-use time::parsing::Parsed;
-use time::{
+use ai_time::format_description::well_known::{Iso8601, Rfc2822, Rfc3339};
+use ai_time::format_description::{BorrowedFormatItem, Component, OwnedFormatItem, modifier};
+use ai_time::macros::{date, datetime, offset, time, utc_datetime};
+use ai_time::parsing::Parsed;
+use ai_time::{
     Date, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcDateTime, UtcOffset, Weekday, error,
     format_description as fd,
 };
@@ -26,7 +26,7 @@ macro_rules! invalid_component {
 
 #[test]
 #[expect(clippy::cognitive_complexity, reason = "all test the same thing")]
-fn rfc_2822() -> time::Result<()> {
+fn rfc_2822() -> ai_time::Result<()> {
     assert_eq!(
         OffsetDateTime::parse("Sat, 02 Jan 2021 03:04:05 GMT", &Rfc2822)?,
         datetime!(2021-01-02 03:04:05 UTC),
@@ -161,7 +161,7 @@ fn rfc_2822() -> time::Result<()> {
 }
 
 #[test]
-fn issue_661() -> time::Result<()> {
+fn issue_661() -> ai_time::Result<()> {
     assert_eq!(
         OffsetDateTime::parse("02 Jan 2021 03:04:05 +0607", &Rfc2822)?,
         datetime!(2021-01-02 03:04:05 +06:07),
@@ -277,7 +277,7 @@ fn rfc_2822_err() {
 }
 
 #[test]
-fn rfc_3339() -> time::Result<()> {
+fn rfc_3339() -> ai_time::Result<()> {
     assert_eq!(
         OffsetDateTime::parse("2021-01-02T03:04:05Z", &Rfc3339)?,
         datetime!(2021-01-02 03:04:05 UTC),
@@ -802,7 +802,7 @@ fn iso_8601_error() {
 }
 
 #[test]
-fn parse_time() -> time::Result<()> {
+fn parse_time() -> ai_time::Result<()> {
     let format_input_output = [
         (fd::parse("[hour repr:12] [period]")?, "01 PM", time!(1 PM)),
         (fd::parse("[hour]")?, "12", time!(12:00)),
@@ -847,7 +847,7 @@ fn parse_time() -> time::Result<()> {
 
 #[expect(clippy::cognitive_complexity, reason = "all test the same thing")]
 #[test]
-fn parse_time_err() -> time::Result<()> {
+fn parse_time_err() -> ai_time::Result<()> {
     assert_eq!(
         Time::try_from(Parsed::new()),
         Err(error::TryFromParsed::InsufficientInformation)
@@ -956,7 +956,7 @@ fn parse_time_err() -> time::Result<()> {
 }
 
 #[test]
-fn parse_date() -> time::Result<()> {
+fn parse_date() -> ai_time::Result<()> {
     let format_input_output = [
         (
             fd::parse("[year]-[month]-[day]")?,
@@ -1037,7 +1037,7 @@ fn parse_date() -> time::Result<()> {
 
 #[expect(clippy::cognitive_complexity, reason = "all test the same thing")]
 #[test]
-fn parse_date_err() -> time::Result<()> {
+fn parse_date_err() -> ai_time::Result<()> {
     assert_eq!(
         Date::try_from(Parsed::new()),
         Err(error::TryFromParsed::InsufficientInformation)
@@ -1146,7 +1146,7 @@ fn parse_date_err() -> time::Result<()> {
 }
 
 #[test]
-fn parse_offset() -> time::Result<()> {
+fn parse_offset() -> ai_time::Result<()> {
     // Regression check for #522.
     assert_eq!(
         UtcOffset::parse(
@@ -1167,7 +1167,7 @@ fn parse_offset() -> time::Result<()> {
 }
 
 #[test]
-fn parse_offset_err() -> time::Result<()> {
+fn parse_offset_err() -> ai_time::Result<()> {
     assert_eq!(
         UtcOffset::parse("", &fd::parse("")?),
         Err(error::Parse::TryFromParsed(
@@ -1206,7 +1206,7 @@ fn parse_offset_err() -> time::Result<()> {
 }
 
 #[test]
-fn parse_primitive_date_time() -> time::Result<()> {
+fn parse_primitive_date_time() -> ai_time::Result<()> {
     assert_eq!(
         PrimitiveDateTime::parse("2023-07-27 23", &fd::parse("[year]-[month]-[day] [hour]")?),
         Ok(datetime!(2023-07-27 23:00))
@@ -1216,7 +1216,7 @@ fn parse_primitive_date_time() -> time::Result<()> {
 }
 
 #[test]
-fn parse_primitive_date_time_err() -> time::Result<()> {
+fn parse_primitive_date_time_err() -> ai_time::Result<()> {
     assert_eq!(
         PrimitiveDateTime::parse("", &fd::parse("")?),
         Err(error::Parse::TryFromParsed(
@@ -1246,7 +1246,7 @@ fn parse_primitive_date_time_err() -> time::Result<()> {
 }
 
 #[test]
-fn parse_offset_date_time_err() -> time::Result<()> {
+fn parse_offset_date_time_err() -> ai_time::Result<()> {
     assert_eq!(
         OffsetDateTime::parse("", &fd::parse("")?),
         Err(error::Parse::TryFromParsed(
@@ -1273,7 +1273,7 @@ fn parse_offset_date_time_err() -> time::Result<()> {
 }
 
 #[test]
-fn parse_utc_date_time() -> time::Result<()> {
+fn parse_utc_date_time() -> ai_time::Result<()> {
     assert_eq!(
         UtcDateTime::parse("2023-07-27 23", &fd::parse("[year]-[month]-[day] [hour]")?),
         Ok(utc_datetime!(2023-07-27 23:00))
@@ -1283,7 +1283,7 @@ fn parse_utc_date_time() -> time::Result<()> {
 }
 
 #[test]
-fn parse_utc_date_time_err() -> time::Result<()> {
+fn parse_utc_date_time_err() -> ai_time::Result<()> {
     assert_eq!(
         UtcDateTime::parse("", &fd::parse("")?),
         Err(error::Parse::TryFromParsed(
@@ -1329,7 +1329,7 @@ fn parse_utc_date_time_err() -> time::Result<()> {
 
 #[expect(clippy::cognitive_complexity, reason = "all test the same thing")]
 #[test]
-fn parse_components() -> time::Result<()> {
+fn parse_components() -> ai_time::Result<()> {
     macro_rules! parse_component {
         ($component:expr, $input:expr, $(_. $property:ident() == $expected:expr);+ $(;)?) => {
             let mut parsed = Parsed::new();
@@ -1720,7 +1720,7 @@ fn parse_components() -> time::Result<()> {
 }
 
 #[test]
-fn parse_optional() -> time::Result<()> {
+fn parse_optional() -> ai_time::Result<()> {
     // Ensure full parsing works as expected.
     let mut parsed = Parsed::new();
     let remaining_input = parsed.parse_item(
@@ -1776,7 +1776,7 @@ fn parse_optional() -> time::Result<()> {
 
 #[expect(clippy::cognitive_complexity, reason = "all test the same thing")]
 #[test]
-fn parse_first() -> time::Result<()> {
+fn parse_first() -> ai_time::Result<()> {
     // Ensure the first item is parsed correctly.
     let mut parsed = Parsed::new();
     let remaining_input = parsed.parse_item(
@@ -1876,7 +1876,7 @@ fn parse_first() -> time::Result<()> {
 }
 
 #[test]
-fn parse_unix_timestamp() -> time::Result<()> {
+fn parse_unix_timestamp() -> ai_time::Result<()> {
     assert_eq!(
         OffsetDateTime::parse("1234567890", &fd::parse("[unix_timestamp]")?)?,
         datetime!(2009-02-13 23:31:30 UTC)
@@ -1907,7 +1907,7 @@ fn parse_unix_timestamp() -> time::Result<()> {
 }
 
 #[test]
-fn parse_unix_timestamp_err() -> time::Result<()> {
+fn parse_unix_timestamp_err() -> ai_time::Result<()> {
     assert_eq!(
         OffsetDateTime::parse("1234567890", &fd::parse("[unix_timestamp sign:mandatory]")?),
         Err(error::Parse::ParseFromDescription(
@@ -1953,7 +1953,7 @@ fn issue_601() {
 }
 
 #[test]
-fn end() -> time::Result<()> {
+fn end() -> ai_time::Result<()> {
     let mut parsed = Parsed::new();
     let remaining_input = parsed.parse_item(
         b"",

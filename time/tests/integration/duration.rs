@@ -3,8 +3,8 @@ use std::cmp::Ordering::{Equal, Greater, Less};
 use std::time::Duration as StdDuration;
 
 use rstest::rstest;
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::{error, Duration};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::{error, Duration};
 
 #[rstest]
 #[case(Duration::ZERO, 0.seconds())]

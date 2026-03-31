@@ -1,6 +1,6 @@
 use rstest::rstest;
-use time::Month::*;
-use time::{util, Month};
+use ai_time::Month::*;
+use ai_time::{util, Month};
 
 #[rstest]
 #[case(2019, January, 31)]
@@ -480,7 +480,7 @@ fn weeks_in_year() {
 #[rstest]
 #[expect(deprecated)]
 fn local_offset_soundness() {
-    use time::util::local_offset::*;
+    use ai_time::util::local_offset::*;
 
     // These functions no longer do anything so they always return `Sound`.
     assert_eq!(get_soundness(), Soundness::Sound);

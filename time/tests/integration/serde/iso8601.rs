@@ -2,9 +2,9 @@ use serde::{Deserialize, Serialize};
 use serde_test::{
     assert_de_tokens_error, assert_ser_tokens_error, assert_tokens, Configure, Token,
 };
-use time::macros::datetime;
-use time::serde::iso8601;
-use time::OffsetDateTime;
+use ai_time::macros::datetime;
+use ai_time::serde::iso8601;
+use ai_time::OffsetDateTime;
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
 struct Test {
@@ -115,7 +115,7 @@ fn issue_674_leap_second_support() {
 #[test]
 fn issue_724_truncation() {
     #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
-    struct Demo(#[serde(with = "time::serde::iso8601")] OffsetDateTime);
+    struct Demo(#[serde(with = "ai_time::serde::iso8601")] OffsetDateTime);
 
     let value = datetime!(2025-01-10 23:01:16.000081999 UTC);
     let info = Demo(value);

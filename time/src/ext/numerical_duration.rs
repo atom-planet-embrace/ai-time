@@ -16,7 +16,7 @@ mod sealed {
 /// Basic construction of [`Duration`]s.
 ///
 /// ```rust
-/// # use time::{Duration, ext::NumericalDuration};
+/// # use ai_time::{Duration, ext::NumericalDuration};
 /// assert_eq!(5.nanoseconds(), Duration::nanoseconds(5));
 /// assert_eq!(5.microseconds(), Duration::microseconds(5));
 /// assert_eq!(5.milliseconds(), Duration::milliseconds(5));
@@ -30,7 +30,7 @@ mod sealed {
 /// Signed integers work as well!
 ///
 /// ```rust
-/// # use time::{Duration, ext::NumericalDuration};
+/// # use ai_time::{Duration, ext::NumericalDuration};
 /// assert_eq!((-5).nanoseconds(), Duration::nanoseconds(-5));
 /// assert_eq!((-5).microseconds(), Duration::microseconds(-5));
 /// assert_eq!((-5).milliseconds(), Duration::milliseconds(-5));
@@ -44,7 +44,7 @@ mod sealed {
 /// Just like any other [`Duration`], they can be added, subtracted, etc.
 ///
 /// ```rust
-/// # use time::ext::NumericalDuration;
+/// # use ai_time::ext::NumericalDuration;
 /// assert_eq!(2.seconds() + 500.milliseconds(), 2_500.milliseconds());
 /// assert_eq!(2.seconds() - 500.milliseconds(), 1_500.milliseconds());
 /// ```

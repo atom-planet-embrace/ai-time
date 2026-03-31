@@ -41,7 +41,7 @@ pub use try_from_parsed::TryFromParsed;
 /// A unified error type for anything returned by a method in the time crate.
 ///
 /// This can be used when you either don't know or don't care about the exact error returned.
-/// `Result<_, time::Error>` (or its alias `time::Result<_>`) will work in these situations.
+/// `Result<_, ai_time::Error>` (or its alias `ai_time::Result<_>`) will work in these situations.
 #[non_exhaustive]
 #[derive(Debug)]
 pub enum Error {

@@ -7,7 +7,7 @@
 /// Three formats are supported: year-week-weekday, year-ordinal, and year-month-day.
 ///
 /// ```rust
-/// # use time::{Date, Weekday::*, Month, macros::date};
+/// # use ai_time::{Date, Weekday::*, Month, macros::date};
 /// assert_eq!(
 ///     date!(2020-W01-3),
 ///     Date::from_iso_week_date(2020, 1, Wednesday)?
@@ -17,9 +17,9 @@
 ///     date!(2020-01-01),
 ///     Date::from_calendar_date(2020, Month::January, 1)?
 /// );
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
-pub use time_macros::date;
+pub use ai_time_macros::date;
 /// Construct a [`PrimitiveDateTime`] or [`OffsetDateTime`] with a statically known value.
 ///
 /// The resulting expression can be used in `const` or `static` declarations.
@@ -32,7 +32,7 @@ pub use time_macros::date;
 /// [`PrimitiveDateTime`]: crate::PrimitiveDateTime
 ///
 /// ```rust
-/// # use time::{Date, Month, macros::datetime, UtcOffset};
+/// # use ai_time::{Date, Month, macros::datetime, UtcOffset};
 /// assert_eq!(
 ///     datetime!(2020-01-01 0:00),
 ///     Date::from_calendar_date(2020, Month::January, 1)?.midnight()
@@ -46,9 +46,9 @@ pub use time_macros::date;
 ///     Date::from_calendar_date(2020, Month::January, 1)?.midnight()
 ///         .assume_offset(UtcOffset::from_hms(-1, 0, 0)?)
 /// );
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
-pub use time_macros::datetime;
+pub use ai_time_macros::datetime;
 /// Equivalent of performing [`format_description::parse()`] at compile time.
 ///
 /// Using the macro instead of the function results in a static slice rather than a
@@ -61,20 +61,20 @@ pub use time_macros::datetime;
 /// the sealed traits required for both formatting and parsing.
 #[cfg_attr(feature = "alloc", doc = "```rust")]
 #[cfg_attr(not(feature = "alloc"), doc = "```rust,ignore")]
-/// # use time::{format_description, macros::format_description};
+/// # use ai_time::{format_description, macros::format_description};
 /// assert_eq!(
 ///     format_description!("[hour]:[minute]:[second]"),
 ///     format_description::parse("[hour]:[minute]:[second]")?
 /// );
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
 /// 
 /// The syntax accepted by this macro is the same as [`format_description::parse()`], which can
-/// be found in [the book](https://time-rs.github.io/book/api/format-description.html).
+/// be found in [the book](https://atom-planet-embrace.github.io/book/api/format-description.html).
 ///
 /// [`format_description::parse()`]: crate::format_description::parse()
 #[cfg(any(feature = "formatting", feature = "parsing"))]
-pub use time_macros::format_description;
+pub use ai_time_macros::format_description;
 /// Construct a [`UtcOffset`](crate::UtcOffset) with a statically known value.
 ///
 /// The resulting expression can be used in `const` or `static` declarations.
@@ -83,7 +83,7 @@ pub use time_macros::format_description;
 /// uppercase and lowercase) is also allowed.
 ///
 /// ```rust
-/// # use time::{UtcOffset, macros::offset};
+/// # use ai_time::{UtcOffset, macros::offset};
 /// assert_eq!(offset!(UTC), UtcOffset::from_hms(0, 0, 0)?);
 /// assert_eq!(offset!(utc), UtcOffset::from_hms(0, 0, 0)?);
 /// assert_eq!(offset!(+0), UtcOffset::from_hms(0, 0, 0)?);
@@ -95,9 +95,9 @@ pub use time_macros::format_description;
 /// assert_eq!(offset!(-1:30:59), UtcOffset::from_hms(-1, -30, -59)?);
 /// assert_eq!(offset!(+23:59:59), UtcOffset::from_hms(23, 59, 59)?);
 /// assert_eq!(offset!(-23:59:59), UtcOffset::from_hms(-23, -59, -59)?);
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
-pub use time_macros::offset;
+pub use ai_time_macros::offset;
 /// Construct a [`Time`](crate::Time) with a statically known value.
 ///
 /// The resulting expression can be used in `const` or `static` declarations.
@@ -110,7 +110,7 @@ pub use time_macros::offset;
 /// invalid.
 ///
 /// ```rust
-/// # use time::{Time, macros::time};
+/// # use ai_time::{Time, macros::time};
 /// assert_eq!(time!(0:00), Time::from_hms(0, 0, 0)?);
 /// assert_eq!(time!(1:02:03), Time::from_hms(1, 2, 3)?);
 /// assert_eq!(
@@ -130,9 +130,9 @@ pub use time_macros::offset;
 ///     time!(1:02:03.004_005_006 pm),
 ///     Time::from_hms_nano(13, 2, 3, 4_005_006)?
 /// );
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
-pub use time_macros::time;
+pub use ai_time_macros::time;
 /// Construct a [`UtcDateTime`] with a statically known value.
 ///
 /// The resulting expression can be used in `const` or `static` declarations.
@@ -142,11 +142,11 @@ pub use time_macros::time;
 /// [`UtcDateTime`]: crate::UtcDateTime
 ///
 /// ```rust
-/// # use time::{Date, Month, macros::utc_datetime};
+/// # use ai_time::{Date, Month, macros::utc_datetime};
 /// assert_eq!(
 ///     utc_datetime!(2020-01-01 0:00),
 ///     Date::from_calendar_date(2020, Month::January, 1)?.midnight().as_utc()
 /// );
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
-pub use time_macros::utc_datetime;
+pub use ai_time_macros::utc_datetime;

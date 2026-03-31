@@ -94,8 +94,8 @@ impl PrimitiveDateTime {
     /// 2. With `large-dates` enabled it is equal to `-999999-01-01 00:00:00.0`
     ///
     /// ```rust
-    /// # use time::PrimitiveDateTime;
-    /// # use time_macros::datetime;
+    /// # use ai_time::PrimitiveDateTime;
+    /// # use ai_time_macros::datetime;
     #[cfg_attr(
         feature = "large-dates",
         doc = "// Assuming `large-dates` feature is enabled."
@@ -126,8 +126,8 @@ impl PrimitiveDateTime {
     /// 2. With `large-dates` enabled it is equal to `999999-12-31 23:59:59.999_999_999`
     ///
     /// ```rust
-    /// # use time::PrimitiveDateTime;
-    /// # use time_macros::datetime;
+    /// # use ai_time::PrimitiveDateTime;
+    /// # use ai_time_macros::datetime;
     #[cfg_attr(
         feature = "large-dates",
         doc = "// Assuming `large-dates` feature is enabled."
@@ -153,8 +153,8 @@ impl PrimitiveDateTime {
     /// Create a new `PrimitiveDateTime` from the provided [`Date`] and [`Time`].
     ///
     /// ```rust
-    /// # use time::PrimitiveDateTime;
-    /// # use time_macros::{date, datetime, time};
+    /// # use ai_time::PrimitiveDateTime;
+    /// # use ai_time_macros::{date, datetime, time};
     /// assert_eq!(
     ///     PrimitiveDateTime::new(date!(2019-01-01), time!(0:00)),
     ///     datetime!(2019-01-01 0:00),
@@ -168,7 +168,7 @@ impl PrimitiveDateTime {
     /// Get the [`Date`] component of the `PrimitiveDateTime`.
     ///
     /// ```rust
-    /// # use time_macros::{date, datetime};
+    /// # use ai_time_macros::{date, datetime};
     /// assert_eq!(datetime!(2019-01-01 0:00).date(), date!(2019-01-01));
     /// ```
     #[inline]
@@ -179,7 +179,7 @@ impl PrimitiveDateTime {
     /// Get the [`Time`] component of the `PrimitiveDateTime`.
     ///
     /// ```rust
-    /// # use time_macros::{datetime, time};
+    /// # use ai_time_macros::{datetime, time};
     /// assert_eq!(datetime!(2019-01-01 0:00).time(), time!(0:00));
     /// ```
     #[inline]
@@ -190,7 +190,7 @@ impl PrimitiveDateTime {
     /// Get the year of the date.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).year(), 2019);
     /// assert_eq!(datetime!(2019-12-31 0:00).year(), 2019);
     /// assert_eq!(datetime!(2020-01-01 0:00).year(), 2020);
@@ -203,8 +203,8 @@ impl PrimitiveDateTime {
     /// Get the month of the date.
     ///
     /// ```rust
-    /// # use time::Month;
-    /// # use time_macros::datetime;
+    /// # use ai_time::Month;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).month(), Month::January);
     /// assert_eq!(datetime!(2019-12-31 0:00).month(), Month::December);
     /// ```
@@ -218,7 +218,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `1..=31`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).day(), 1);
     /// assert_eq!(datetime!(2019-12-31 0:00).day(), 31);
     /// ```
@@ -232,7 +232,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `1..=366` (`1..=365` for common years).
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).ordinal(), 1);
     /// assert_eq!(datetime!(2019-12-31 0:00).ordinal(), 365);
     /// ```
@@ -246,7 +246,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `1..=53`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).iso_week(), 1);
     /// assert_eq!(datetime!(2019-10-04 0:00).iso_week(), 40);
     /// assert_eq!(datetime!(2020-01-01 0:00).iso_week(), 1);
@@ -263,7 +263,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..=53`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).sunday_based_week(), 0);
     /// assert_eq!(datetime!(2020-01-01 0:00).sunday_based_week(), 0);
     /// assert_eq!(datetime!(2020-12-31 0:00).sunday_based_week(), 52);
@@ -279,7 +279,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..=53`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).monday_based_week(), 0);
     /// assert_eq!(datetime!(2020-01-01 0:00).monday_based_week(), 0);
     /// assert_eq!(datetime!(2020-12-31 0:00).monday_based_week(), 52);
@@ -293,8 +293,8 @@ impl PrimitiveDateTime {
     /// Get the year, month, and day.
     ///
     /// ```rust
-    /// # use time::Month;
-    /// # use time_macros::datetime;
+    /// # use ai_time::Month;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2019-01-01 0:00).to_calendar_date(),
     ///     (2019, Month::January, 1)
@@ -308,7 +308,7 @@ impl PrimitiveDateTime {
     /// Get the year and ordinal day number.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).to_ordinal_date(), (2019, 1));
     /// ```
     #[inline]
@@ -319,8 +319,8 @@ impl PrimitiveDateTime {
     /// Get the ISO 8601 year, week number, and weekday.
     ///
     /// ```rust
-    /// # use time::Weekday::*;
-    /// # use time_macros::datetime;
+    /// # use ai_time::Weekday::*;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2019-01-01 0:00).to_iso_week_date(),
     ///     (2019, 1, Tuesday)
@@ -350,8 +350,8 @@ impl PrimitiveDateTime {
     /// Get the weekday.
     ///
     /// ```rust
-    /// # use time::Weekday::*;
-    /// # use time_macros::datetime;
+    /// # use ai_time::Weekday::*;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).weekday(), Tuesday);
     /// assert_eq!(datetime!(2019-02-01 0:00).weekday(), Friday);
     /// assert_eq!(datetime!(2019-03-01 0:00).weekday(), Friday);
@@ -373,7 +373,7 @@ impl PrimitiveDateTime {
     /// Get the Julian day for the date. The time is not taken into account for this calculation.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(-4713-11-24 0:00).to_julian_day(), 0);
     /// assert_eq!(datetime!(2000-01-01 0:00).to_julian_day(), 2_451_545);
     /// assert_eq!(datetime!(2019-01-01 0:00).to_julian_day(), 2_458_485);
@@ -387,7 +387,7 @@ impl PrimitiveDateTime {
     /// Get the clock hour, minute, and second.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2020-01-01 0:00:00).as_hms(), (0, 0, 0));
     /// assert_eq!(datetime!(2020-01-01 23:59:59).as_hms(), (23, 59, 59));
     /// ```
@@ -399,7 +399,7 @@ impl PrimitiveDateTime {
     /// Get the clock hour, minute, second, and millisecond.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2020-01-01 0:00:00).as_hms_milli(), (0, 0, 0, 0));
     /// assert_eq!(
     ///     datetime!(2020-01-01 23:59:59.999).as_hms_milli(),
@@ -414,7 +414,7 @@ impl PrimitiveDateTime {
     /// Get the clock hour, minute, second, and microsecond.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2020-01-01 0:00:00).as_hms_micro(), (0, 0, 0, 0));
     /// assert_eq!(
     ///     datetime!(2020-01-01 23:59:59.999_999).as_hms_micro(),
@@ -429,7 +429,7 @@ impl PrimitiveDateTime {
     /// Get the clock hour, minute, second, and nanosecond.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2020-01-01 0:00:00).as_hms_nano(), (0, 0, 0, 0));
     /// assert_eq!(
     ///     datetime!(2020-01-01 23:59:59.999_999_999).as_hms_nano(),
@@ -446,7 +446,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..24`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).hour(), 0);
     /// assert_eq!(datetime!(2019-01-01 23:59:59).hour(), 23);
     /// ```
@@ -460,7 +460,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..60`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).minute(), 0);
     /// assert_eq!(datetime!(2019-01-01 23:59:59).minute(), 59);
     /// ```
@@ -474,7 +474,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..60`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).second(), 0);
     /// assert_eq!(datetime!(2019-01-01 23:59:59).second(), 59);
     /// ```
@@ -488,7 +488,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..1_000`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).millisecond(), 0);
     /// assert_eq!(datetime!(2019-01-01 23:59:59.999).millisecond(), 999);
     /// ```
@@ -502,7 +502,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..1_000_000`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).microsecond(), 0);
     /// assert_eq!(
     ///     datetime!(2019-01-01 23:59:59.999_999).microsecond(),
@@ -519,7 +519,7 @@ impl PrimitiveDateTime {
     /// The returned value will always be in the range `0..1_000_000_000`.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2019-01-01 0:00).nanosecond(), 0);
     /// assert_eq!(
     ///     datetime!(2019-01-01 23:59:59.999_999_999).nanosecond(),
@@ -535,7 +535,7 @@ impl PrimitiveDateTime {
     /// [`UtcOffset`], return an [`OffsetDateTime`].
     ///
     /// ```rust
-    /// # use time_macros::{datetime, offset};
+    /// # use ai_time_macros::{datetime, offset};
     /// assert_eq!(
     ///     datetime!(2019-01-01 0:00)
     ///         .assume_offset(offset!(UTC))
@@ -558,7 +558,7 @@ impl PrimitiveDateTime {
     /// [`OffsetDateTime`].
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2019-01-01 0:00).assume_utc().unix_timestamp(),
     ///     1_546_300_800,
@@ -576,7 +576,7 @@ impl PrimitiveDateTime {
     /// [`UtcDateTime`].
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2019-01-01 0:00).as_utc().unix_timestamp(),
     ///     1_546_300_800,
@@ -590,8 +590,8 @@ impl PrimitiveDateTime {
     /// Computes `self + duration`, returning `None` if an overflow occurred.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::datetime;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::datetime;
     /// let datetime = Date::MIN.midnight();
     /// assert_eq!(datetime.checked_add((-2).days()), None);
     ///
@@ -621,8 +621,8 @@ impl PrimitiveDateTime {
     /// Computes `self - duration`, returning `None` if an overflow occurred.
     ///
     /// ```
-    /// # use time::{Date, ext::NumericalDuration};
-    /// # use time_macros::datetime;
+    /// # use ai_time::{Date, ext::NumericalDuration};
+    /// # use ai_time_macros::datetime;
     /// let datetime = Date::MIN.midnight();
     /// assert_eq!(datetime.checked_sub(2.days()), None);
     ///
@@ -652,8 +652,8 @@ impl PrimitiveDateTime {
     /// Computes `self + duration`, saturating value on overflow.
     ///
     /// ```
-    /// # use time::{PrimitiveDateTime, ext::NumericalDuration};
-    /// # use time_macros::datetime;
+    /// # use ai_time::{PrimitiveDateTime, ext::NumericalDuration};
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     PrimitiveDateTime::MIN.saturating_add((-2).days()),
     ///     PrimitiveDateTime::MIN
@@ -683,8 +683,8 @@ impl PrimitiveDateTime {
     /// Computes `self - duration`, saturating value on overflow.
     ///
     /// ```
-    /// # use time::{PrimitiveDateTime, ext::NumericalDuration};
-    /// # use time_macros::datetime;
+    /// # use ai_time::{PrimitiveDateTime, ext::NumericalDuration};
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     PrimitiveDateTime::MIN.saturating_sub(2.days()),
     ///     PrimitiveDateTime::MIN
@@ -717,7 +717,7 @@ impl PrimitiveDateTime {
     /// Replace the time, preserving the date.
     ///
     /// ```rust
-    /// # use time_macros::{datetime, time};
+    /// # use ai_time_macros::{datetime, time};
     /// assert_eq!(
     ///     datetime!(2020-01-01 17:00).replace_time(time!(5:00)),
     ///     datetime!(2020-01-01 5:00)
@@ -735,7 +735,7 @@ impl PrimitiveDateTime {
     /// Replace the date, preserving the time.
     ///
     /// ```rust
-    /// # use time_macros::{datetime, date};
+    /// # use ai_time_macros::{datetime, date};
     /// assert_eq!(
     ///     datetime!(2020-01-01 12:00).replace_date(date!(2020-01-30)),
     ///     datetime!(2020-01-30 12:00)
@@ -753,7 +753,7 @@ impl PrimitiveDateTime {
     /// Replace the year. The month and day will be unchanged.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 12:00).replace_year(2019),
     ///     Ok(datetime!(2019-02-18 12:00))
@@ -773,8 +773,8 @@ impl PrimitiveDateTime {
     /// Replace the month of the year.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
-    /// # use time::Month;
+    /// # use ai_time_macros::datetime;
+    /// # use ai_time::Month;
     /// assert_eq!(
     ///     datetime!(2022-02-18 12:00).replace_month(Month::January),
     ///     Ok(datetime!(2022-01-18 12:00))
@@ -793,7 +793,7 @@ impl PrimitiveDateTime {
     /// Replace the day of the month.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 12:00).replace_day(1),
     ///     Ok(datetime!(2022-02-01 12:00))
@@ -813,7 +813,7 @@ impl PrimitiveDateTime {
     /// Replace the day of the year.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(datetime!(2022-049 12:00).replace_ordinal(1), Ok(datetime!(2022-001 12:00)));
     /// assert!(datetime!(2022-049 12:00).replace_ordinal(0).is_err()); // 0 isn't a valid ordinal
     /// assert!(datetime!(2022-049 12:00).replace_ordinal(366).is_err()); // 2022 isn't a leap year
@@ -830,7 +830,7 @@ impl PrimitiveDateTime {
     /// Truncate to the start of the day, setting the time to midnight.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 15:30:45.123_456_789).truncate_to_day(),
     ///     datetime!(2022-02-18 0:00)
@@ -845,7 +845,7 @@ impl PrimitiveDateTime {
     /// Replace the clock hour.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 01:02:03.004_005_006).replace_hour(7),
     ///     Ok(datetime!(2022-02-18 07:02:03.004_005_006))
@@ -864,7 +864,7 @@ impl PrimitiveDateTime {
     /// Truncate to the hour, setting the minute, second, and subsecond components to zero.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 15:30:45.123_456_789).truncate_to_hour(),
     ///     datetime!(2022-02-18 15:00)
@@ -879,7 +879,7 @@ impl PrimitiveDateTime {
     /// Replace the minutes within the hour.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 01:02:03.004_005_006).replace_minute(7),
     ///     Ok(datetime!(2022-02-18 01:07:03.004_005_006))
@@ -898,7 +898,7 @@ impl PrimitiveDateTime {
     /// Truncate to the minute, setting the second and subsecond components to zero.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 15:30:45.123_456_789).truncate_to_minute(),
     ///     datetime!(2022-02-18 15:30)
@@ -913,7 +913,7 @@ impl PrimitiveDateTime {
     /// Replace the seconds within the minute.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 01:02:03.004_005_006).replace_second(7),
     ///     Ok(datetime!(2022-02-18 01:02:07.004_005_006))
@@ -932,7 +932,7 @@ impl PrimitiveDateTime {
     /// Truncate to the second, setting the subsecond components to zero.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 15:30:45.123_456_789).truncate_to_second(),
     ///     datetime!(2022-02-18 15:30:45)
@@ -947,7 +947,7 @@ impl PrimitiveDateTime {
     /// Replace the milliseconds within the second.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 01:02:03.004_005_006).replace_millisecond(7),
     ///     Ok(datetime!(2022-02-18 01:02:03.007))
@@ -969,7 +969,7 @@ impl PrimitiveDateTime {
     /// Truncate to the millisecond, setting the microsecond and nanosecond components to zero.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 15:30:45.123_456_789).truncate_to_millisecond(),
     ///     datetime!(2022-02-18 15:30:45.123)
@@ -984,7 +984,7 @@ impl PrimitiveDateTime {
     /// Replace the microseconds within the second.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 01:02:03.004_005_006).replace_microsecond(7_008),
     ///     Ok(datetime!(2022-02-18 01:02:03.007_008))
@@ -1006,7 +1006,7 @@ impl PrimitiveDateTime {
     /// Truncate to the microsecond, setting the nanosecond component to zero.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 15:30:45.123_456_789).truncate_to_microsecond(),
     ///     datetime!(2022-02-18 15:30:45.123_456)
@@ -1021,7 +1021,7 @@ impl PrimitiveDateTime {
     /// Replace the nanoseconds within the second.
     ///
     /// ```rust
-    /// # use time_macros::datetime;
+    /// # use ai_time_macros::datetime;
     /// assert_eq!(
     ///     datetime!(2022-02-18 01:02:03.004_005_006).replace_nanosecond(7_008_009),
     ///     Ok(datetime!(2022-02-18 01:02:03.007_008_009))
@@ -1055,14 +1055,14 @@ impl PrimitiveDateTime {
     /// description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::format_description;
-    /// # use time_macros::datetime;
+    /// # use ai_time::format_description;
+    /// # use ai_time_macros::datetime;
     /// let format = format_description::parse("[year]-[month]-[day] [hour]:[minute]:[second]")?;
     /// assert_eq!(
     ///     datetime!(2020-01-02 03:04:05).format(&format)?,
     ///     "2020-01-02 03:04:05"
     /// );
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn format(self, format: &(impl Formattable + ?Sized)) -> Result<String, error::Format> {
@@ -1076,14 +1076,14 @@ impl PrimitiveDateTime {
     /// description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::PrimitiveDateTime;
-    /// # use time_macros::{datetime, format_description};
+    /// # use ai_time::PrimitiveDateTime;
+    /// # use ai_time_macros::{datetime, format_description};
     /// let format = format_description!("[year]-[month]-[day] [hour]:[minute]:[second]");
     /// assert_eq!(
     ///     PrimitiveDateTime::parse("2020-01-02 03:04:05", &format)?,
     ///     datetime!(2020-01-02 03:04:05)
     /// );
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn parse(

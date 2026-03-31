@@ -20,13 +20,13 @@ pub use self::adt_hack::EncodedConfig;
 /// # Examples
 #[cfg_attr(feature = "formatting", doc = "```rust")]
 #[cfg_attr(not(feature = "formatting"), doc = "```rust,ignore")]
-/// # use time::format_description::well_known::Iso8601;
-/// # use time_macros::datetime;
+/// # use ai_time::format_description::well_known::Iso8601;
+/// # use ai_time_macros::datetime;
 /// assert_eq!(
 ///     datetime!(1997-11-12 9:55:06 -6:00).format(&Iso8601::DEFAULT)?,
 ///     "1997-11-12T09:55:06.000000000-06:00"
 /// );
-/// # Ok::<_, time::Error>(())
+/// # Ok::<_, ai_time::Error>(())
 /// ```
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub struct Iso8601<const CONFIG: EncodedConfig = { Config::DEFAULT.encode() }>;

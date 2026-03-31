@@ -1,14 +1,14 @@
 use core::num::NonZero;
 
 use rstest::rstest;
-use time::format_description::modifier::{
+use ai_time::format_description::modifier::{
     Day, End, Ignore, Month, MonthRepr, OffsetMinute, OffsetSecond, Ordinal, Padding, Period,
     TrailingInput, UnixTimestamp, UnixTimestampPrecision, WeekNumber, WeekNumberRepr, Weekday,
     WeekdayRepr, Year, YearRepr,
 };
-use time::format_description::{BorrowedFormatItem, Component};
-use time::macros::{date, format_description, time};
-use time::{Date, Time};
+use ai_time::format_description::{BorrowedFormatItem, Component};
+use ai_time::macros::{date, format_description, time};
+use ai_time::{Date, Time};
 
 #[rstest]
 fn nontrivial_string() {
@@ -385,7 +385,7 @@ mod demo {
     #[expect(dead_code)]
     type Option = core::option::Option<()>;
 
-    time::serde::format_description!(
+    ai_time::serde::format_description!(
         seconds,
         OffsetDateTime,
         "[year]-[month]-[day]T[hour]:[minute]:[second]Z"

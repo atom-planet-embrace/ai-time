@@ -1,7 +1,7 @@
 //! Utility functions, including updating time zone information.
 
-pub(crate) use time_core::util::{days_in_month_leap, range_validated};
-pub use time_core::util::{days_in_year, is_leap_year, weeks_in_year};
+pub(crate) use ai_time_core::util::{days_in_month_leap, range_validated};
+pub use ai_time_core::util::{days_in_year, is_leap_year, weeks_in_year};
 
 use crate::Month;
 
@@ -18,19 +18,19 @@ pub(crate) enum DateAdjustment {
 /// Get the number of days in the month of a given year.
 ///
 /// ```rust
-/// # use time::{Month, util};
+/// # use ai_time::{Month, util};
 /// assert_eq!(util::days_in_month(Month::February, 2020), 29);
 /// ```
 #[inline]
 pub const fn days_in_month(month: Month, year: i32) -> u8 {
-    time_core::util::days_in_month(month as u8, year)
+    ai_time_core::util::days_in_month(month as u8, year)
 }
 
 /// Get the number of days in the month of a given year.
 ///
 /// ```rust
 /// # #![expect(deprecated)]
-/// # use time::{Month, util};
+/// # use ai_time::{Month, util};
 /// assert_eq!(util::days_in_year_month(2020, Month::February), 29);
 /// ```
 #[deprecated(

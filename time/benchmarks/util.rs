@@ -2,7 +2,7 @@ use std::hint::black_box as bb;
 use std::sync::LazyLock;
 
 use criterion::Bencher;
-use time::util;
+use ai_time::util;
 
 /// Generate a representative sample of all years.
 fn representative_years() -> [i32; 800] {

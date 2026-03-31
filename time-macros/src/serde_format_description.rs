@@ -81,7 +81,7 @@ pub(crate) fn build(
                 use ::serde::Serialize;
                 datetime
                     .format(&description())
-                    .map_err(::time::error::Format::into_invalid_serde_value::<S>)?
+                    .map_err(::ai_time::error::Format::into_invalid_serde_value::<S>)?
                     .serialize(serializer)
             }
         }
@@ -112,7 +112,7 @@ pub(crate) fn build(
                 use ::serde::Serialize;
                 option.map(|datetime| datetime.format(&description()))
                     .transpose()
-                    .map_err(::time::error::Format::into_invalid_serde_value::<S>)?
+                    .map_err(::ai_time::error::Format::into_invalid_serde_value::<S>)?
                     .serialize(serializer)
             }
         }
@@ -145,9 +145,9 @@ pub(crate) fn build(
         (false, false) => {
             bug!("serde_format_description::build called without formatting or parsing enabled")
         }
-        (false, true) => quote_! { ::time::parsing::Parsable },
-        (true, false) => quote_! { ::time::formatting::Formattable },
-        (true, true) => quote_! { ::time::formatting::Formattable + ::time::parsing::Parsable },
+        (false, true) => quote_! { ::ai_time::parsing::Parsable },
+        (true, false) => quote_! { ::ai_time::formatting::Formattable },
+        (true, true) => quote_! { ::ai_time::formatting::Formattable + ::ai_time::parsing::Parsable },
     };
 
     quote_! {
@@ -155,7 +155,7 @@ pub(crate) fn build(
             use super::*;
             // TODO Remove the prefix, forcing the user to import the type themself. This must be
             // done in a breaking change.
-            use ::time::#(ty) as __TimeSerdeType;
+            use ::ai_time::#(ty) as __TimeSerdeType;
             #[expect(clippy::pub_use)]
             pub use self::__hygiene::*;
 

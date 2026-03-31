@@ -1,6 +1,6 @@
 mod numerical_duration {
-    use time::ext::NumericalDuration;
-    use time::Duration;
+    use ai_time::ext::NumericalDuration;
+    use ai_time::Duration;
 
     #[test]
     fn unsigned() {
@@ -60,7 +60,7 @@ mod numerical_duration {
 mod numerical_std_duration {
     use std::time::Duration as StdDuration;
 
-    use time::ext::NumericalStdDuration;
+    use ai_time::ext::NumericalStdDuration;
 
     #[test]
     fn unsigned() {

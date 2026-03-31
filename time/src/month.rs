@@ -63,7 +63,7 @@ impl Month {
     /// Get the number of days in the month of a given year.
     ///
     /// ```rust
-    /// # use time::Month;
+    /// # use ai_time::Month;
     /// assert_eq!(Month::February.length(2020), 29);
     /// ```
     #[inline]
@@ -74,7 +74,7 @@ impl Month {
     /// Get the previous month.
     ///
     /// ```rust
-    /// # use time::Month;
+    /// # use ai_time::Month;
     /// assert_eq!(Month::January.previous(), Month::December);
     /// ```
     #[inline]
@@ -98,7 +98,7 @@ impl Month {
     /// Get the next month.
     ///
     /// ```rust
-    /// # use time::Month;
+    /// # use ai_time::Month;
     /// assert_eq!(Month::January.next(), Month::February);
     /// ```
     #[inline]
@@ -122,7 +122,7 @@ impl Month {
     /// Get n-th next month.
     ///
     /// ```rust
-    /// # use time::Month;
+    /// # use ai_time::Month;
     /// assert_eq!(Month::January.nth_next(4), Month::May);
     /// assert_eq!(Month::July.nth_next(9), Month::April);
     /// ```
@@ -150,7 +150,7 @@ impl Month {
     /// Get n-th previous month.
     ///
     /// ```rust
-    /// # use time::Month;
+    /// # use ai_time::Month;
     /// assert_eq!(Month::January.nth_prev(4), Month::September);
     /// assert_eq!(Month::July.nth_prev(9), Month::October);
     /// ```

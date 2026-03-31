@@ -193,7 +193,7 @@ pub fn format_description(input: TokenStream) -> TokenStream {
 
         Ok(quote_! {
             const {
-                use ::time::format_description::{*, modifier::*};
+                use ::ai_time::format_description::{*, modifier::*};
                 &[#S(
                     items
                         .into_iter()
@@ -252,7 +252,7 @@ pub fn serde_format_description(input: TokenStream) -> TokenStream {
                     .collect();
                 let items = quote_! {
                     const {
-                        use ::time::format_description::{*, modifier::*};
+                        use ::ai_time::format_description::{*, modifier::*};
                         &[#S(items)] as StaticFormatDescription
                     }
                 };

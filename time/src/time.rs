@@ -123,8 +123,8 @@ impl Time {
     /// A `Time` that is exactly midnight. This is the smallest possible value for a `Time`.
     ///
     /// ```rust
-    /// # use time::Time;
-    /// # use time_macros::time;
+    /// # use ai_time::Time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(Time::MIDNIGHT, time!(0:00));
     /// ```
     #[doc(alias = "MIN")]
@@ -135,8 +135,8 @@ impl Time {
     /// `Time`.
     ///
     /// ```rust
-    /// # use time::Time;
-    /// # use time_macros::time;
+    /// # use ai_time::Time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(Time::MAX, time!(23:59:59.999_999_999));
     /// ```
     pub const MAX: Self =
@@ -173,12 +173,12 @@ impl Time {
     /// Attempt to create a `Time` from the hour, minute, and second.
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms(1, 2, 3).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms(24, 0, 0).is_err()); // 24 isn't a valid hour.
     /// assert!(Time::from_hms(0, 60, 0).is_err()); // 60 isn't a valid minute.
     /// assert!(Time::from_hms(0, 0, 60).is_err()); // 60 isn't a valid second.
@@ -213,12 +213,12 @@ impl Time {
     /// Attempt to create a `Time` from the hour, minute, second, and millisecond.
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms_milli(1, 2, 3, 4).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms_milli(24, 0, 0, 0).is_err()); // 24 isn't a valid hour.
     /// assert!(Time::from_hms_milli(0, 60, 0, 0).is_err()); // 60 isn't a valid minute.
     /// assert!(Time::from_hms_milli(0, 0, 60, 0).is_err()); // 60 isn't a valid second.
@@ -242,12 +242,12 @@ impl Time {
     /// Attempt to create a `Time` from the hour, minute, second, and microsecond.
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms_micro(1, 2, 3, 4).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms_micro(24, 0, 0, 0).is_err()); // 24 isn't a valid hour.
     /// assert!(Time::from_hms_micro(0, 60, 0, 0).is_err()); // 60 isn't a valid minute.
     /// assert!(Time::from_hms_micro(0, 0, 60, 0).is_err()); // 60 isn't a valid second.
@@ -271,12 +271,12 @@ impl Time {
     /// Attempt to create a `Time` from the hour, minute, second, and nanosecond.
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms_nano(1, 2, 3, 4).is_ok());
     /// ```
     ///
     /// ```rust
-    /// # use time::Time;
+    /// # use ai_time::Time;
     /// assert!(Time::from_hms_nano(24, 0, 0, 0).is_err()); // 24 isn't a valid hour.
     /// assert!(Time::from_hms_nano(0, 60, 0, 0).is_err()); // 60 isn't a valid minute.
     /// assert!(Time::from_hms_nano(0, 0, 60, 0).is_err()); // 60 isn't a valid second.
@@ -300,7 +300,7 @@ impl Time {
     /// Get the clock hour, minute, and second.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).as_hms(), (0, 0, 0));
     /// assert_eq!(time!(23:59:59).as_hms(), (23, 59, 59));
     /// ```
@@ -312,7 +312,7 @@ impl Time {
     /// Get the clock hour, minute, second, and millisecond.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).as_hms_milli(), (0, 0, 0, 0));
     /// assert_eq!(time!(23:59:59.999).as_hms_milli(), (23, 59, 59, 999));
     /// ```
@@ -329,7 +329,7 @@ impl Time {
     /// Get the clock hour, minute, second, and microsecond.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).as_hms_micro(), (0, 0, 0, 0));
     /// assert_eq!(
     ///     time!(23:59:59.999_999).as_hms_micro(),
@@ -349,7 +349,7 @@ impl Time {
     /// Get the clock hour, minute, second, and nanosecond.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).as_hms_nano(), (0, 0, 0, 0));
     /// assert_eq!(
     ///     time!(23:59:59.999_999_999).as_hms_nano(),
@@ -378,7 +378,7 @@ impl Time {
     /// The returned value will always be in the range `0..24`.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).hour(), 0);
     /// assert_eq!(time!(23:59:59).hour(), 23);
     /// ```
@@ -392,7 +392,7 @@ impl Time {
     /// The returned value will always be in the range `0..60`.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).minute(), 0);
     /// assert_eq!(time!(23:59:59).minute(), 59);
     /// ```
@@ -406,7 +406,7 @@ impl Time {
     /// The returned value will always be in the range `0..60`.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00:00).second(), 0);
     /// assert_eq!(time!(23:59:59).second(), 59);
     /// ```
@@ -420,7 +420,7 @@ impl Time {
     /// The returned value will always be in the range `0..1_000`.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00).millisecond(), 0);
     /// assert_eq!(time!(23:59:59.999).millisecond(), 999);
     /// ```
@@ -434,7 +434,7 @@ impl Time {
     /// The returned value will always be in the range `0..1_000_000`.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00).microsecond(), 0);
     /// assert_eq!(time!(23:59:59.999_999).microsecond(), 999_999);
     /// ```
@@ -448,7 +448,7 @@ impl Time {
     /// The returned value will always be in the range `0..1_000_000_000`.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00).nanosecond(), 0);
     /// assert_eq!(time!(23:59:59.999_999_999).nanosecond(), 999_999_999);
     /// ```
@@ -460,9 +460,9 @@ impl Time {
     /// Determine the [`Duration`] that, if added to `self`, would result in the parameter.
     ///
     /// ```rust
-    /// # use time::Time;
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::Time;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(18:00).duration_until(Time::MIDNIGHT), 6.hours());
     /// assert_eq!(time!(23:00).duration_until(time!(1:00)), 2.hours());
     /// ```
@@ -522,9 +522,9 @@ impl Time {
     /// Determine the [`Duration`] that, if added to the parameter, would result in `self`.
     ///
     /// ```rust
-    /// # use time::Time;
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::Time;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(Time::MIDNIGHT.duration_since(time!(18:00)), 6.hours());
     /// assert_eq!(time!(1:00).duration_since(time!(23:00)), 2.hours());
     /// ```
@@ -678,7 +678,7 @@ impl Time {
     /// Replace the clock hour.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).replace_hour(7),
     ///     Ok(time!(07:02:03.004_005_006))
@@ -695,7 +695,7 @@ impl Time {
     /// Truncate the time to the hour, setting the minute, second, and subsecond components to zero.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(01:02:03.004_005_006).truncate_to_hour(), time!(01:00));
     /// ```
     #[must_use = "This method does not mutate the original `Time`."]
@@ -710,7 +710,7 @@ impl Time {
     /// Replace the minutes within the hour.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).replace_minute(7),
     ///     Ok(time!(01:07:03.004_005_006))
@@ -727,7 +727,7 @@ impl Time {
     /// Truncate the time to the minute, setting the second and subsecond components to zero.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).truncate_to_minute(),
     ///     time!(01:02)
@@ -744,7 +744,7 @@ impl Time {
     /// Replace the seconds within the minute.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).replace_second(7),
     ///     Ok(time!(01:02:07.004_005_006))
@@ -761,7 +761,7 @@ impl Time {
     /// Truncate the time to the second, setting the subsecond component to zero.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).truncate_to_second(),
     ///     time!(01:02:03)
@@ -777,7 +777,7 @@ impl Time {
     /// Replace the milliseconds within the second.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).replace_millisecond(7),
     ///     Ok(time!(01:02:03.007))
@@ -803,7 +803,7 @@ impl Time {
     /// zero.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).truncate_to_millisecond(),
     ///     time!(01:02:03.004)
@@ -822,7 +822,7 @@ impl Time {
     /// Replace the microseconds within the second.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).replace_microsecond(7_008),
     ///     Ok(time!(01:02:03.007_008))
@@ -847,7 +847,7 @@ impl Time {
     /// Truncate the time to the microsecond, setting the nanosecond component to zero.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).truncate_to_microsecond(),
     ///     time!(01:02:03.004_005)
@@ -866,7 +866,7 @@ impl Time {
     /// Replace the nanoseconds within the second.
     ///
     /// ```rust
-    /// # use time_macros::time;
+    /// # use ai_time_macros::time;
     /// assert_eq!(
     ///     time!(01:02:03.004_005_006).replace_nanosecond(7_008_009),
     ///     Ok(time!(01:02:03.007_008_009))
@@ -903,11 +903,11 @@ impl Time {
     /// Format the `Time` using the provided [format description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::format_description;
-    /// # use time_macros::time;
+    /// # use ai_time::format_description;
+    /// # use ai_time_macros::time;
     /// let format = format_description::parse("[hour]:[minute]:[second]")?;
     /// assert_eq!(time!(12:00).format(&format)?, "12:00:00");
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn format(self, format: &(impl Formattable + ?Sized)) -> Result<String, error::Format> {
@@ -921,11 +921,11 @@ impl Time {
     /// description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::Time;
-    /// # use time_macros::{time, format_description};
+    /// # use ai_time::Time;
+    /// # use ai_time_macros::{time, format_description};
     /// let format = format_description!("[hour]:[minute]:[second]");
     /// assert_eq!(Time::parse("12:00:00", &format)?, time!(12:00));
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn parse(
@@ -1025,8 +1025,8 @@ impl Add<Duration> for Time {
     /// Add the sub-day time of the [`Duration`] to the `Time`. Wraps on overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(12:00) + 2.hours(), time!(14:00));
     /// assert_eq!(time!(0:00:01) + (-2).seconds(), time!(23:59:59));
     /// ```
@@ -1049,8 +1049,8 @@ impl Add<StdDuration> for Time {
     /// Add the sub-day time of the [`std::time::Duration`] to the `Time`. Wraps on overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalStdDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::ext::NumericalStdDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(12:00) + 2.std_hours(), time!(14:00));
     /// assert_eq!(time!(23:59:59) + 2.std_seconds(), time!(0:00:01));
     /// ```
@@ -1073,8 +1073,8 @@ impl Sub<Duration> for Time {
     /// Subtract the sub-day time of the [`Duration`] from the `Time`. Wraps on overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(14:00) - 2.hours(), time!(12:00));
     /// assert_eq!(time!(23:59:59) - (-2).seconds(), time!(0:00:01));
     /// ```
@@ -1097,8 +1097,8 @@ impl Sub<StdDuration> for Time {
     /// Subtract the sub-day time of the [`std::time::Duration`] from the `Time`. Wraps on overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalStdDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::ext::NumericalStdDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(14:00) - 2.std_hours(), time!(12:00));
     /// assert_eq!(time!(0:00:01) - 2.std_seconds(), time!(23:59:59));
     /// ```
@@ -1122,8 +1122,8 @@ impl Sub for Time {
     /// the same calendar day.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
-    /// # use time_macros::time;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time_macros::time;
     /// assert_eq!(time!(0:00) - time!(0:00), 0.seconds());
     /// assert_eq!(time!(1:00) - time!(0:00), 1.hours());
     /// assert_eq!(time!(0:00) - time!(1:00), (-1).hours());

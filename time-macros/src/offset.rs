@@ -1,7 +1,7 @@
 use std::iter::Peekable;
 
 use proc_macro::{Span, TokenStream, token_stream};
-use time_core::convert::*;
+use ai_time_core::convert::*;
 
 use crate::Error;
 use crate::helpers::{consume_any_ident, consume_number, consume_punct};
@@ -86,7 +86,7 @@ impl ToTokenStream for Offset {
     fn append_to(self, ts: &mut TokenStream) {
         quote_append! { ts
             unsafe {
-                ::time::UtcOffset::__from_hms_unchecked(
+                ::ai_time::UtcOffset::__from_hms_unchecked(
                     #(self.hours),
                     #(self.minutes),
                     #(self.seconds),

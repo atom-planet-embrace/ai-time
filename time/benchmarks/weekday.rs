@@ -1,5 +1,5 @@
 use criterion::Bencher;
-use time::Weekday::*;
+use ai_time::Weekday::*;
 
 setup_benchmark! {
     "Weekday",

@@ -1,4 +1,4 @@
-use time::serde;
+use ai_time::serde;
 
 serde::format_description!(); // unexpected end of input
 serde::format_description!("bad string", OffsetDateTime, "[year] [month]"); // module name is not ident

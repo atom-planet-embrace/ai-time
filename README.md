@@ -1,15 +1,18 @@
+This is a fork of the [time](https://crates.io/crates/time) crate.
+The git repository is located at https://github.com/time-rs/time.
+
 # time
 
 [![minimum rustc: 1.88.0](https://img.shields.io/badge/minimum%20rustc-1.88.0-yellowgreen?logo=rust&style=flat-square)](https://www.whatrustisit.com)
 [![version](https://img.shields.io/crates/v/time?color=blue&logo=rust&style=flat-square)](https://crates.io/crates/time)
-[![build status](https://img.shields.io/github/actions/workflow/status/time-rs/time/build.yaml?branch=main&style=flat-square)](https://github.com/time-rs/time/actions)
-[![codecov](https://codecov.io/gh/time-rs/time/branch/main/graph/badge.svg?token=yt4XSmQNKQ)](https://codecov.io/gh/time-rs/time)
+[![build status](https://img.shields.io/github/actions/workflow/status/atom-planet-embrace/time/build.yaml?branch=main&style=flat-square)](https://github.com/atom-planet-embrace/time/actions)
+[![codecov](https://codecov.io/gh/atom-planet-embrace/time/branch/main/graph/badge.svg?token=yt4XSmQNKQ)](https://codecov.io/gh/atom-planet-embrace/time)
 
 Documentation:
 
 - [latest release](https://docs.rs/time)
-- [main branch](https://time-rs.github.io/api/time)
-- [book](https://time-rs.github.io/book)
+- [main branch](https://atom-planet-embrace.github.io/api/time)
+- [book](https://atom-planet-embrace.github.io/book)
 
 ## Minimum Rust version policy
 
@@ -30,19 +33,19 @@ version of the third-party crate supports the minimum supported Rust version of 
 
 Contributions are always welcome! If you have an idea, it's best to float it by me before working on
 it to ensure no effort is wasted. If there's already an open issue for it, knock yourself out.
-Internal documentation can be viewed [here](https://time-rs.github.io/internal-api/time).
+Internal documentation can be viewed [here](https://atom-planet-embrace.github.io/internal-api/time).
 
 If you have any questions, feel free to use [Discussions]. Don't hesitate to ask questions — that's
 what I'm here for!
 
-[Discussions]: https://github.com/time-rs/time/discussions
+[Discussions]: https://github.com/atom-planet-embrace/time/discussions
 
 ## License
 
 This project is licensed under either of
 
-- [Apache License, Version 2.0](https://github.com/time-rs/time/blob/main/LICENSE-Apache)
-- [MIT license](https://github.com/time-rs/time/blob/main/LICENSE-MIT)
+- [Apache License, Version 2.0](https://github.com/atom-planet-embrace/time/blob/main/LICENSE-Apache)
+- [MIT license](https://github.com/atom-planet-embrace/time/blob/main/LICENSE-MIT)
 
 at your option.
 

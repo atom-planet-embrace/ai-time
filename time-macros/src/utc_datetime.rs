@@ -29,7 +29,7 @@ pub(crate) fn parse(chars: &mut Peekable<token_stream::IntoIter>) -> Result<UtcD
 impl ToTokenStream for UtcDateTime {
     fn append_to(self, ts: &mut TokenStream) {
         quote_append! { ts
-            ::time::UtcDateTime::new(
+            ::ai_time::UtcDateTime::new(
                 #S(self.date),
                 #S(self.time),
             )

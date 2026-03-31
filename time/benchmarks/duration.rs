@@ -1,8 +1,8 @@
 use std::time::Duration as StdDuration;
 
 use criterion::Bencher;
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::Duration;
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::Duration;
 
 setup_benchmark! {
     "Duration",

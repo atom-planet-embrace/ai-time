@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 use serde_test::{assert_tokens, Configure, Token};
-use time::serde::rfc2822;
-use time::OffsetDateTime;
-use time_macros::datetime;
+use ai_time::serde::rfc2822;
+use ai_time::OffsetDateTime;
+use ai_time_macros::datetime;
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
 struct Test {

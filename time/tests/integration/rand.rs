@@ -1,6 +1,6 @@
 use rand08::Rng as _;
 use rand09::Rng as _;
-use time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
+use ai_time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
 
 #[test]
 fn support08() {

@@ -1,9 +1,9 @@
 use num_conv::prelude::*;
 use quickcheck::{Arbitrary, TestResult};
 use quickcheck_macros::quickcheck;
-use time::macros::{format_description, time};
-use time::Weekday::*;
-use time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
+use ai_time::macros::{format_description, time};
+use ai_time::Weekday::*;
+use ai_time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
 
 macro_rules! test_shrink {
     ($type:ty,

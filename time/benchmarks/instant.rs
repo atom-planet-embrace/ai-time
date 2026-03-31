@@ -3,8 +3,8 @@
 use std::time::Instant as StdInstant;
 
 use criterion::Bencher;
-use time::ext::NumericalDuration;
-use time::{Duration, Instant};
+use ai_time::ext::NumericalDuration;
+use ai_time::{Duration, Instant};
 
 setup_benchmark! {
     "Instant",

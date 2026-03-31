@@ -30,7 +30,7 @@ use crate::Duration;
 #[doc(hidden)]
 #[deprecated(
     since = "0.3.35",
-    note = "import `std::time::Instant` and `time::ext::InstantExt` instead"
+    note = "import `std::time::Instant` and `ai_time::ext::InstantExt` instead"
 )]
 #[repr(transparent)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
@@ -41,7 +41,7 @@ impl Instant {
     ///
     /// ```rust
     /// # #![expect(deprecated)]
-    /// # use time::Instant;
+    /// # use ai_time::Instant;
     /// println!("{:?}", Instant::now());
     /// ```
     #[inline]
@@ -54,7 +54,7 @@ impl Instant {
     ///
     /// ```rust
     /// # #![expect(deprecated)]
-    /// # use time::{Instant, ext::{NumericalStdDuration, NumericalDuration}};
+    /// # use ai_time::{Instant, ext::{NumericalStdDuration, NumericalDuration}};
     /// # use std::thread;
     /// let instant = Instant::now();
     /// thread::sleep(1.std_milliseconds());
@@ -71,7 +71,7 @@ impl Instant {
     ///
     /// ```rust
     /// # #![expect(deprecated)]
-    /// # use time::{Instant, ext::NumericalDuration};
+    /// # use ai_time::{Instant, ext::NumericalDuration};
     /// let now = Instant::now();
     /// assert_eq!(now.checked_add(5.seconds()), Some(now + 5.seconds()));
     /// assert_eq!(now.checked_add((-5).seconds()), Some(now + (-5).seconds()));
@@ -94,7 +94,7 @@ impl Instant {
     ///
     /// ```rust
     /// # #![expect(deprecated)]
-    /// # use time::{Instant, ext::NumericalDuration};
+    /// # use ai_time::{Instant, ext::NumericalDuration};
     /// let now = Instant::now();
     /// assert_eq!(now.checked_sub(5.seconds()), Some(now - 5.seconds()));
     /// assert_eq!(now.checked_sub((-5).seconds()), Some(now - (-5).seconds()));
@@ -115,7 +115,7 @@ impl Instant {
     ///
     /// ```rust
     /// # #![expect(deprecated)]
-    /// # use time::Instant;
+    /// # use ai_time::Instant;
     /// let now = Instant::now();
     /// assert_eq!(now.into_inner(), now.0);
     /// ```
@@ -151,9 +151,9 @@ impl Sub for Instant {
             Ordering::Equal => Duration::ZERO,
             Ordering::Greater => (self.0 - other.0)
                 .try_into()
-                .expect("overflow converting `std::time::Duration` to `time::Duration`"),
+                .expect("overflow converting `std::time::Duration` to `ai_time::Duration`"),
             Ordering::Less => -Duration::try_from(other.0 - self.0)
-                .expect("overflow converting `std::time::Duration` to `time::Duration`"),
+                .expect("overflow converting `std::time::Duration` to `ai_time::Duration`"),
         }
     }
 }

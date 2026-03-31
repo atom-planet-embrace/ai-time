@@ -1,6 +1,6 @@
 use criterion::Bencher;
 use rand09::Rng;
-use time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
+use ai_time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
 
 macro_rules! bench_rand {
     ($($name:ident : $type:ty),* $(,)?) => {

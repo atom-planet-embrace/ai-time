@@ -144,8 +144,8 @@ impl UtcOffset {
     /// A `UtcOffset` that is UTC.
     ///
     /// ```rust
-    /// # use time::UtcOffset;
-    /// # use time_macros::offset;
+    /// # use ai_time::UtcOffset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(UtcOffset::UTC, offset!(UTC));
     /// ```
     pub const UTC: Self = Self::from_whole_seconds_ranged(WholeSeconds::new_static::<0>());
@@ -183,10 +183,10 @@ impl UtcOffset {
     /// have their signs flipped.
     ///
     /// ```rust
-    /// # use time::UtcOffset;
+    /// # use ai_time::UtcOffset;
     /// assert_eq!(UtcOffset::from_hms(1, 2, 3)?.as_hms(), (1, 2, 3));
     /// assert_eq!(UtcOffset::from_hms(1, -2, -3)?.as_hms(), (1, 2, 3));
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub const fn from_hms(
@@ -264,9 +264,9 @@ impl UtcOffset {
     /// Create a `UtcOffset` representing an offset by the number of seconds provided.
     ///
     /// ```rust
-    /// # use time::UtcOffset;
+    /// # use ai_time::UtcOffset;
     /// assert_eq!(UtcOffset::from_whole_seconds(3_723)?.as_hms(), (1, 2, 3));
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub const fn from_whole_seconds(seconds: i32) -> Result<Self, error::ComponentRange> {
@@ -278,13 +278,13 @@ impl UtcOffset {
     /// Create a `UtcOffset` representing an offset by the number of seconds provided.
     // ignore because the function is crate-private
     /// ```rust,ignore
-    /// # use time::UtcOffset;
+    /// # use ai_time::UtcOffset;
     /// # use deranged::RangedI32;
     /// assert_eq!(
     ///     UtcOffset::from_whole_seconds_ranged(RangedI32::new_static::<3_723>()).as_hms(),
     ///     (1, 2, 3)
     /// );
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub(crate) const fn from_whole_seconds_ranged(seconds: WholeSeconds) -> Self {
@@ -302,7 +302,7 @@ impl UtcOffset {
     /// will always match. A positive value indicates an offset to the east; a negative to the west.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(offset!(+1:02:03).as_hms(), (1, 2, 3));
     /// assert_eq!(offset!(-1:02:03).as_hms(), (-1, -2, -3));
     /// ```
@@ -323,7 +323,7 @@ impl UtcOffset {
     /// offset to the east; a negative to the west.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(offset!(+1:02:03).whole_hours(), 1);
     /// assert_eq!(offset!(-1:02:03).whole_hours(), -1);
     /// ```
@@ -336,7 +336,7 @@ impl UtcOffset {
     /// offset to the east; a negative to the west.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(offset!(+1:02:03).whole_minutes(), 62);
     /// assert_eq!(offset!(-1:02:03).whole_minutes(), -62);
     /// ```
@@ -349,7 +349,7 @@ impl UtcOffset {
     /// indicates an offset to the east; a negative to the west.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(offset!(+1:02:03).minutes_past_hour(), 2);
     /// assert_eq!(offset!(-1:02:03).minutes_past_hour(), -2);
     /// ```
@@ -362,7 +362,7 @@ impl UtcOffset {
     /// offset to the east; a negative to the west.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(offset!(+1:02:03).whole_seconds(), 3723);
     /// assert_eq!(offset!(-1:02:03).whole_seconds(), -3723);
     /// ```
@@ -379,7 +379,7 @@ impl UtcOffset {
     /// indicates an offset to the east; a negative to the west.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert_eq!(offset!(+1:02:03).seconds_past_minute(), 3);
     /// assert_eq!(offset!(-1:02:03).seconds_past_minute(), -3);
     /// ```
@@ -392,7 +392,7 @@ impl UtcOffset {
     ///
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert!(!offset!(+1:02:03).is_utc());
     /// assert!(!offset!(-1:02:03).is_utc());
     /// assert!(offset!(UTC).is_utc());
@@ -405,7 +405,7 @@ impl UtcOffset {
     /// Check if the offset is positive, or east of UTC.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert!(offset!(+1:02:03).is_positive());
     /// assert!(!offset!(-1:02:03).is_positive());
     /// assert!(!offset!(UTC).is_positive());
@@ -418,7 +418,7 @@ impl UtcOffset {
     /// Check if the offset is negative, or west of UTC.
     ///
     /// ```rust
-    /// # use time_macros::offset;
+    /// # use ai_time_macros::offset;
     /// assert!(!offset!(+1:02:03).is_negative());
     /// assert!(offset!(-1:02:03).is_negative());
     /// assert!(!offset!(UTC).is_negative());
@@ -432,7 +432,7 @@ impl UtcOffset {
     /// determined, an error is returned.
     ///
     /// ```rust
-    /// # use time::{UtcOffset, OffsetDateTime};
+    /// # use ai_time::{UtcOffset, OffsetDateTime};
     /// let local_offset = UtcOffset::local_offset_at(OffsetDateTime::UNIX_EPOCH);
     /// # if false {
     /// assert!(local_offset.is_ok());
@@ -448,7 +448,7 @@ impl UtcOffset {
     /// error is returned.
     ///
     /// ```rust
-    /// # use time::UtcOffset;
+    /// # use ai_time::UtcOffset;
     /// let local_offset = UtcOffset::current_local_offset();
     /// # if false {
     /// assert!(local_offset.is_ok());
@@ -477,11 +477,11 @@ impl UtcOffset {
     /// Format the `UtcOffset` using the provided [format description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::format_description;
-    /// # use time_macros::offset;
+    /// # use ai_time::format_description;
+    /// # use ai_time_macros::offset;
     /// let format = format_description::parse("[offset_hour sign:mandatory]:[offset_minute]")?;
     /// assert_eq!(offset!(+1).format(&format)?, "+01:00");
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn format(self, format: &(impl Formattable + ?Sized)) -> Result<String, error::Format> {
@@ -495,11 +495,11 @@ impl UtcOffset {
     /// description](crate::format_description).
     ///
     /// ```rust
-    /// # use time::UtcOffset;
-    /// # use time_macros::{offset, format_description};
+    /// # use ai_time::UtcOffset;
+    /// # use ai_time_macros::{offset, format_description};
     /// let format = format_description!("[offset_hour]:[offset_minute]");
     /// assert_eq!(UtcOffset::parse("-03:42", &format)?, offset!(-3:42));
-    /// # Ok::<_, time::Error>(())
+    /// # Ok::<_, ai_time::Error>(())
     /// ```
     #[inline]
     pub fn parse(

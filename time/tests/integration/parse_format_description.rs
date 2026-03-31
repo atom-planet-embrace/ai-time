@@ -2,12 +2,12 @@ use core::num::NonZero;
 
 use rstest::rstest;
 use rstest_reuse::{apply, template};
-use time::error::InvalidFormatDescription;
-use time::format_description::modifier::*;
-use time::format_description::{
+use ai_time::error::InvalidFormatDescription;
+use ai_time::format_description::modifier::*;
+use ai_time::format_description::{
     self, BorrowedFormatItem, Component, OwnedFormatItem, StaticFormatDescription,
 };
-use time::macros::format_description;
+use ai_time::macros::format_description;
 
 /// A modifier with its value and string representation.
 ///
@@ -841,7 +841,7 @@ fn rfc_3339() {
 fn strftime_equivalence(
     #[case] strftime: &str,
     #[case] custom: StaticFormatDescription,
-) -> time::Result<()> {
+) -> ai_time::Result<()> {
     let borrowed = format_description::parse_strftime_borrowed(strftime)?;
     let owned = format_description::parse_strftime_owned(strftime)?;
 
@@ -864,7 +864,7 @@ fn strftime_equivalence(
 #[case("%x", "[month]/[day]/[year repr:last_two]")]
 #[case("%X", "[hour]:[minute]:[second]")]
 #[case("%z", "[offset_hour sign:mandatory][offset_minute]")]
-fn strftime_compound_equivalence(#[case] strftime: &str, #[case] custom: &str) -> time::Result<()> {
+fn strftime_compound_equivalence(#[case] strftime: &str, #[case] custom: &str) -> ai_time::Result<()> {
     let borrowed = format_description::parse_strftime_borrowed(strftime)?;
     let owned = format_description::parse_strftime_owned(strftime)?;
     let custom = format_description::parse(custom)?;

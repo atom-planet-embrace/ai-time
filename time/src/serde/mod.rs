@@ -32,7 +32,7 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// Generate a custom serializer and deserializer from a format string or an existing format.
 ///
 /// The syntax accepted by this macro is the same as [`format_description::parse()`], which can
-/// be found in [the book](https://time-rs.github.io/book/api/format-description.html).
+/// be found in [the book](https://atom-planet-embrace.github.io/book/api/format-description.html).
 ///
 /// # Usage
 ///
@@ -69,7 +69,7 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// Using a format string:
 ///
 /// ```rust,no_run
-/// # use time::OffsetDateTime;
+/// # use ai_time::OffsetDateTime;
 #[cfg_attr(
     all(feature = "formatting", feature = "parsing"),
     doc = "use ::serde::{Serialize, Deserialize};"
@@ -82,7 +82,7 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
     all(not(feature = "formatting"), feature = "parsing"),
     doc = "use ::serde::Deserialize;"
 )]
-/// use time::serde;
+/// use ai_time::serde;
 ///
 /// // Makes a module `mod my_format { ... }`.
 /// serde::format_description!(my_format, OffsetDateTime, "hour=[hour], minute=[minute]");
@@ -110,7 +110,7 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// 
 /// Define the format separately to be used in multiple places:
 /// ```rust,no_run
-/// # use time::OffsetDateTime;
+/// # use ai_time::OffsetDateTime;
 #[cfg_attr(
     all(feature = "formatting", feature = "parsing"),
     doc = "use ::serde::{Serialize, Deserialize};"
@@ -123,10 +123,10 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
     all(not(feature = "formatting"), feature = "parsing"),
     doc = "use ::serde::Deserialize;"
 )]
-/// use time::serde;
-/// use time::format_description::StaticFormatDescription;
+/// use ai_time::serde;
+/// use ai_time::format_description::StaticFormatDescription;
 ///
-/// const DATE_TIME_FORMAT: StaticFormatDescription = time::macros::format_description!(
+/// const DATE_TIME_FORMAT: StaticFormatDescription = ai_time::macros::format_description!(
 ///     "hour=[hour], minute=[minute]"
 /// );
 ///
@@ -161,7 +161,7 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// 
 /// Customize the configuration of ISO 8601 formatting/parsing:
 /// ```rust,no_run
-/// # use time::OffsetDateTime;
+/// # use ai_time::OffsetDateTime;
 #[cfg_attr(
     all(feature = "formatting", feature = "parsing"),
     doc = "use ::serde::{Serialize, Deserialize};"
@@ -174,8 +174,8 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
     all(not(feature = "formatting"), feature = "parsing"),
     doc = "use ::serde::Deserialize;"
 )]
-/// use time::serde;
-/// use time::format_description::well_known::{iso8601, Iso8601};
+/// use ai_time::serde;
+/// use ai_time::format_description::well_known::{iso8601, Iso8601};
 ///
 /// # #[allow(dead_code)]
 /// const CONFIG: iso8601::EncodedConfig = iso8601::Config::DEFAULT
@@ -211,7 +211,7 @@ use serde_core::{Deserialize, Deserializer, Serialize, Serializer};
 /// 
 /// [`format_description::parse()`]: crate::format_description::parse()
 #[cfg(all(feature = "macros", any(feature = "formatting", feature = "parsing")))]
-pub use time_macros::serde_format_description as format_description;
+pub use ai_time_macros::serde_format_description as format_description;
 
 use self::visitor::Visitor;
 #[cfg(feature = "parsing")]

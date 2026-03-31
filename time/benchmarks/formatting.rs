@@ -1,9 +1,9 @@
 use std::io;
 
 use criterion::Bencher;
-use time::format_description;
-use time::format_description::well_known::{Rfc2822, Rfc3339};
-use time::macros::{date, datetime, format_description as fd, offset, time};
+use ai_time::format_description;
+use ai_time::format_description::well_known::{Rfc2822, Rfc3339};
+use ai_time::macros::{date, datetime, format_description as fd, offset, time};
 
 setup_benchmark! {
     "Formatting",

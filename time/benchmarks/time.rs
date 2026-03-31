@@ -1,9 +1,9 @@
 use std::hint::black_box;
 
 use criterion::Bencher;
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::time;
-use time::Time;
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::time;
+use ai_time::Time;
 
 setup_benchmark! {
     "Time",

@@ -1,5 +1,5 @@
 use rstest::rstest;
-use time::convert::*;
+use ai_time::convert::*;
 
 #[rstest]
 fn issue_749() {

@@ -1,8 +1,8 @@
 use std::cmp::Ordering;
 
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::{date, datetime, offset, time};
-use time::{Duration, Month, PrimitiveDateTime, Weekday};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::{date, datetime, offset, time};
+use ai_time::{Duration, Month, PrimitiveDateTime, Weekday};
 
 #[test]
 fn new() {

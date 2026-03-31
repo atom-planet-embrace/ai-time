@@ -1,5 +1,5 @@
 use criterion::Bencher;
-use time::Month::*;
+use ai_time::Month::*;
 
 setup_benchmark! {
     "Month",

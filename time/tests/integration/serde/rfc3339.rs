@@ -2,9 +2,9 @@ use serde::{Deserialize, Serialize};
 use serde_test::{
     assert_de_tokens_error, assert_ser_tokens_error, assert_tokens, Configure, Token,
 };
-use time::macros::datetime;
-use time::serde::rfc3339;
-use time::OffsetDateTime;
+use ai_time::macros::datetime;
+use ai_time::serde::rfc3339;
+use ai_time::OffsetDateTime;
 
 #[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
 struct Test {
@@ -113,9 +113,9 @@ fn issue_479() -> serde_json::Result<()> {
 
     #[derive(Serialize, Deserialize, Debug, Eq, PartialEq)]
     struct S {
-        #[serde(with = "time::serde::rfc3339")]
+        #[serde(with = "ai_time::serde::rfc3339")]
         date: OffsetDateTime,
-        #[serde(with = "time::serde::rfc3339::option", default)]
+        #[serde(with = "ai_time::serde::rfc3339::option", default)]
         maybe_date: Option<OffsetDateTime>,
     }
 

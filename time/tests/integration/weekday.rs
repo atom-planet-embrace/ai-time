@@ -1,5 +1,5 @@
 use rstest::rstest;
-use time::Weekday::{self, *};
+use ai_time::Weekday::{self, *};
 
 #[rstest]
 #[case(Sunday, Saturday)]
@@ -139,7 +139,7 @@ fn display(#[case] weekday: Weekday, #[case] expected: &str) {
 #[case("Friday", Ok(Friday))]
 #[case("Saturday", Ok(Saturday))]
 #[case("Sunday", Ok(Sunday))]
-#[case("foo", Err(time::error::InvalidVariant))]
-fn from_str(#[case] input: &str, #[case] expected: Result<Weekday, time::error::InvalidVariant>) {
+#[case("foo", Err(ai_time::error::InvalidVariant))]
+fn from_str(#[case] input: &str, #[case] expected: Result<Weekday, ai_time::error::InvalidVariant>) {
     assert_eq!(input.parse::<Weekday>(), expected);
 }

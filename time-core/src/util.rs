@@ -134,7 +134,7 @@ pub const fn weeks_in_year(year: i32) -> u8 {
 /// Get the number of days in the month of a given year.
 ///
 /// ```rust
-/// # use time_core::util::days_in_month;
+/// # use ai_time_core::util::days_in_month;
 /// assert_eq!(days_in_month(2, 2020), 29);
 /// ```
 ///

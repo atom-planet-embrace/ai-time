@@ -1,7 +1,7 @@
 lints.workspace = true
 
 [package]
-name = "time"
+name = "ai-time"
 version = "0.3.47"
 categories = [
     "date-and-time",
@@ -9,7 +9,7 @@ categories = [
     "parser-implementations",
     "value-formatting",
 ]
-description = "Date and time library. Fully interoperable with the standard library. Mostly compatible with #![no_std]."
+description = "A no_std fork of time"
 include = ["{src,tests,benchmarks}/**/*", "LICENSE-*", "README.md"]
 readme = "../README.md"
 
@@ -32,16 +32,16 @@ bench = false
 [features]
 default = ["std"]
 alloc = ["serde_core?/alloc"]
-formatting = ["dep:itoa", "dep:libm", "dep:no_std_io", "alloc", "time-macros?/formatting"]
-large-dates = ["time-core/large-dates", "time-macros?/large-dates"]
+formatting = ["dep:itoa", "dep:libm", "dep:no_std_io", "alloc", "ai-time-macros?/formatting"]
+large-dates = ["ai-time-core/large-dates", "ai-time-macros?/large-dates"]
 local-offset = ["std", "dep:libc", "dep:num_threads"]
-macros = ["dep:time-macros"]
-parsing = ["time-macros?/parsing"]
+macros = ["dep:ai-time-macros"]
+parsing = ["ai-time-macros?/parsing"]
 quickcheck = ["dep:quickcheck", "alloc", "deranged/quickcheck"]
 rand = ["rand08", "rand09"]
 rand08 = ["dep:rand08", "deranged/rand08"]
 rand09 = ["dep:rand09", "deranged/rand09"]
-serde = ["dep:serde_core", "time-macros?/serde", "deranged/serde"]
+serde = ["dep:serde_core", "ai-time-macros?/serde", "deranged/serde"]
 serde-human-readable = ["serde", "formatting", "parsing"]
 # Deprecated in favor of using the relevant flags directly.
 serde-well-known = ["serde", "formatting", "parsing"]
@@ -61,8 +61,8 @@ quickcheck = { workspace = true, optional = true }
 rand08 = { workspace = true, optional = true }
 rand09 = { workspace = true, optional = true }
 serde_core = { workspace = true, optional = true }
-time-core.workspace = true
-time-macros = { workspace = true, optional = true }
+ai-time-core.workspace = true
+ai-time-macros = { workspace = true, optional = true }
 
 [target.'cfg(target_family = "unix")'.dependencies]
 libc = { workspace = true, optional = true }
@@ -79,7 +79,7 @@ serde = { workspace = true, features = ["derive"] }
 serde_json.workspace = true
 serde_test.workspace = true
 quickcheck_macros.workspace = true
-time-macros.workspace = true
+ai-time-macros.workspace = true
 rstest.workspace = true
 rstest_reuse.workspace = true
 

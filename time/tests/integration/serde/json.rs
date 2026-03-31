@@ -2,8 +2,8 @@ use std::error::Error;
 
 use serde::{Deserialize, Serialize};
 use serde_test::Configure;
-use time::macros::{date, datetime, time};
-use time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, Weekday};
+use ai_time::macros::{date, datetime, time};
+use ai_time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, Weekday};
 
 enum Format {
     Compact,

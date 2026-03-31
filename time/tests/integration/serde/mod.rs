@@ -1,8 +1,8 @@
 use serde_test::{
     Compact, Configure, Readable, Token, assert_de_tokens, assert_de_tokens_error, assert_tokens,
 };
-use time::macros::{date, datetime, offset, time};
-use time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
+use ai_time::macros::{date, datetime, offset, time};
+use ai_time::{Date, Duration, Month, OffsetDateTime, PrimitiveDateTime, Time, UtcOffset, Weekday};
 
 mod error_conditions;
 mod iso8601;

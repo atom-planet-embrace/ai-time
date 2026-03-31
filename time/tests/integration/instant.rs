@@ -4,8 +4,8 @@ use std::cmp::Ordering;
 use std::thread;
 use std::time::Instant as StdInstant;
 
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::{Duration, Instant};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::{Duration, Instant};
 
 #[test]
 fn elapsed() {

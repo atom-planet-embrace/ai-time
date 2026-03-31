@@ -1,4 +1,4 @@
-use time::macros::date;
+use ai_time::macros::date;
 
 fn main() {
     let _ = date!(+1_000_000-01-01);

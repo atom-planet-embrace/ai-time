@@ -1,6 +1,6 @@
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::time;
-use time::{Result, Time};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::time;
+use ai_time::{Result, Time};
 
 #[test]
 fn from_hms() -> Result<()> {

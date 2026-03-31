@@ -2,7 +2,7 @@ use std::iter::Peekable;
 
 use num_conv::Truncate;
 use proc_macro::token_stream;
-use time_core::util::{days_in_year, weeks_in_year};
+use ai_time_core::util::{days_in_year, weeks_in_year};
 
 use crate::Error;
 use crate::helpers::{consume_number, consume_punct, days_in_year_month, ymd_to_yo, ywd_to_yo};
@@ -152,7 +152,7 @@ impl ToTokenStream for Date {
     fn append_to(self, ts: &mut proc_macro::TokenStream) {
         quote_append! { ts
             unsafe {
-                ::time::Date::__from_ordinal_date_unchecked(
+                ::ai_time::Date::__from_ordinal_date_unchecked(
                     #(self.year),
                     #(self.ordinal),
                 )

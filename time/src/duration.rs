@@ -203,7 +203,7 @@ impl Duration {
     /// Equivalent to `0.seconds()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::ZERO, 0.seconds());
     /// ```
     pub const ZERO: Self = Self::seconds(0);
@@ -211,7 +211,7 @@ impl Duration {
     /// Equivalent to `1.nanoseconds()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::NANOSECOND, 1.nanoseconds());
     /// ```
     pub const NANOSECOND: Self = Self::nanoseconds(1);
@@ -219,7 +219,7 @@ impl Duration {
     /// Equivalent to `1.microseconds()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::MICROSECOND, 1.microseconds());
     /// ```
     pub const MICROSECOND: Self = Self::microseconds(1);
@@ -227,7 +227,7 @@ impl Duration {
     /// Equivalent to `1.milliseconds()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::MILLISECOND, 1.milliseconds());
     /// ```
     pub const MILLISECOND: Self = Self::milliseconds(1);
@@ -235,7 +235,7 @@ impl Duration {
     /// Equivalent to `1.seconds()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::SECOND, 1.seconds());
     /// ```
     pub const SECOND: Self = Self::seconds(1);
@@ -243,7 +243,7 @@ impl Duration {
     /// Equivalent to `1.minutes()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::MINUTE, 1.minutes());
     /// ```
     pub const MINUTE: Self = Self::minutes(1);
@@ -251,7 +251,7 @@ impl Duration {
     /// Equivalent to `1.hours()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::HOUR, 1.hours());
     /// ```
     pub const HOUR: Self = Self::hours(1);
@@ -259,7 +259,7 @@ impl Duration {
     /// Equivalent to `1.days()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::DAY, 1.days());
     /// ```
     pub const DAY: Self = Self::days(1);
@@ -267,7 +267,7 @@ impl Duration {
     /// Equivalent to `1.weeks()`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::WEEK, 1.weeks());
     /// ```
     pub const WEEK: Self = Self::weeks(1);
@@ -281,7 +281,7 @@ impl Duration {
     /// Check if a duration is exactly zero.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert!(0.seconds().is_zero());
     /// assert!(!1.nanoseconds().is_zero());
     /// ```
@@ -293,7 +293,7 @@ impl Duration {
     /// Check if a duration is negative.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert!((-1).seconds().is_negative());
     /// assert!(!0.seconds().is_negative());
     /// assert!(!1.seconds().is_negative());
@@ -306,7 +306,7 @@ impl Duration {
     /// Check if a duration is positive.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert!(1.seconds().is_positive());
     /// assert!(!0.seconds().is_positive());
     /// assert!(!(-1).seconds().is_positive());
@@ -321,7 +321,7 @@ impl Duration {
     /// This method saturates the returned value if it would otherwise overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.seconds().abs(), 1.seconds());
     /// assert_eq!(0.seconds().abs(), 0.seconds());
     /// assert_eq!((-1).seconds().abs(), 1.seconds());
@@ -338,7 +338,7 @@ impl Duration {
     /// [`std::time::Duration`] and does not saturate the returned value (unlike [`Duration::abs`]).
     ///
     /// ```rust
-    /// # use time::ext::{NumericalDuration, NumericalStdDuration};
+    /// # use ai_time::ext::{NumericalDuration, NumericalStdDuration};
     /// assert_eq!(1.seconds().unsigned_abs(), 1.std_seconds());
     /// assert_eq!(0.seconds().unsigned_abs(), 0.std_seconds());
     /// assert_eq!((-1).seconds().unsigned_abs(), 1.std_seconds());
@@ -390,7 +390,7 @@ impl Duration {
     /// least ±10<sup>9</sup>, it will wrap to the number of seconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::new(1, 0), 1.seconds());
     /// assert_eq!(Duration::new(-1, 0), (-1).seconds());
     /// assert_eq!(Duration::new(1, 2_000_000_000), 3.seconds());
@@ -404,7 +404,7 @@ impl Duration {
     pub const fn new(mut seconds: i64, mut nanoseconds: i32) -> Self {
         seconds = seconds
             .checked_add(nanoseconds as i64 / Nanosecond::per_t::<i64>(Second))
-            .expect("overflow constructing `time::Duration`");
+            .expect("overflow constructing `ai_time::Duration`");
         nanoseconds %= Nanosecond::per_t::<i32>(Second);
 
         if seconds > 0 && nanoseconds < 0 {
@@ -449,7 +449,7 @@ impl Duration {
     /// `Duration::seconds(weeks * 604_800)`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::weeks(1), 604_800.seconds());
     /// ```
     ///
@@ -462,7 +462,7 @@ impl Duration {
         Self::seconds(
             weeks
                 .checked_mul(Second::per_t(Week))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
@@ -470,7 +470,7 @@ impl Duration {
     /// `Duration::seconds(days * 86_400)`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::days(1), 86_400.seconds());
     /// ```
     ///
@@ -482,7 +482,7 @@ impl Duration {
     pub const fn days(days: i64) -> Self {
         Self::seconds(
             days.checked_mul(Second::per_t(Day))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
@@ -490,7 +490,7 @@ impl Duration {
     /// `Duration::seconds(hours * 3_600)`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::hours(1), 3_600.seconds());
     /// ```
     ///
@@ -503,7 +503,7 @@ impl Duration {
         Self::seconds(
             hours
                 .checked_mul(Second::per_t(Hour))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
@@ -511,7 +511,7 @@ impl Duration {
     /// `Duration::seconds(minutes * 60)`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::minutes(1), 60.seconds());
     /// ```
     ///
@@ -524,14 +524,14 @@ impl Duration {
         Self::seconds(
             minutes
                 .checked_mul(Second::per_t(Minute))
-                .expect("overflow constructing `time::Duration`"),
+                .expect("overflow constructing `ai_time::Duration`"),
         )
     }
 
     /// Create a new `Duration` with the given number of seconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::seconds(1), 1_000.milliseconds());
     /// ```
     #[inline]
@@ -578,7 +578,7 @@ impl Duration {
     /// Creates a new `Duration` from the specified number of seconds represented as `f64`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::seconds_f64(0.5), 0.5.seconds());
     /// assert_eq!(Duration::seconds_f64(-0.5), (-0.5).seconds());
     /// ```
@@ -588,10 +588,10 @@ impl Duration {
         match Self::try_seconds_f64(seconds) {
             Ok(duration) => duration,
             Err(FloatConstructorError::Nan) => {
-                panic!("passed NaN to `time::Duration::seconds_f64`");
+                panic!("passed NaN to `ai_time::Duration::seconds_f64`");
             }
             Err(FloatConstructorError::NegOverflow | FloatConstructorError::PosOverflow) => {
-                panic!("overflow constructing `time::Duration`");
+                panic!("overflow constructing `ai_time::Duration`");
             }
         }
     }
@@ -599,7 +599,7 @@ impl Duration {
     /// Creates a new `Duration` from the specified number of seconds represented as `f32`.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::seconds_f32(0.5), 0.5.seconds());
     /// assert_eq!(Duration::seconds_f32(-0.5), (-0.5).seconds());
     /// ```
@@ -609,10 +609,10 @@ impl Duration {
         match Self::try_seconds_f32(seconds) {
             Ok(duration) => duration,
             Err(FloatConstructorError::Nan) => {
-                panic!("passed NaN to `time::Duration::seconds_f32`");
+                panic!("passed NaN to `ai_time::Duration::seconds_f32`");
             }
             Err(FloatConstructorError::NegOverflow | FloatConstructorError::PosOverflow) => {
-                panic!("overflow constructing `time::Duration`");
+                panic!("overflow constructing `ai_time::Duration`");
             }
         }
     }
@@ -623,7 +623,7 @@ impl Duration {
     /// of 0 seconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::saturating_seconds_f64(0.5), 0.5.seconds());
     /// assert_eq!(Duration::saturating_seconds_f64(-0.5), (-0.5).seconds());
     /// assert_eq!(
@@ -655,7 +655,7 @@ impl Duration {
     /// of 0 seconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::saturating_seconds_f32(0.5), 0.5.seconds());
     /// assert_eq!(Duration::saturating_seconds_f32(-0.5), (-0.5).seconds());
     /// assert_eq!(
@@ -686,7 +686,7 @@ impl Duration {
     /// represented.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::checked_seconds_f64(0.5), Some(0.5.seconds()));
     /// assert_eq!(Duration::checked_seconds_f64(-0.5), Some((-0.5).seconds()));
     /// assert_eq!(Duration::checked_seconds_f64(f64::NAN), None);
@@ -706,7 +706,7 @@ impl Duration {
     /// represented.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::checked_seconds_f32(0.5), Some(0.5.seconds()));
     /// assert_eq!(Duration::checked_seconds_f32(-0.5), Some((-0.5).seconds()));
     /// assert_eq!(Duration::checked_seconds_f32(f32::NAN), None);
@@ -724,7 +724,7 @@ impl Duration {
     /// Create a new `Duration` with the given number of milliseconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::milliseconds(1), 1_000.microseconds());
     /// assert_eq!(Duration::milliseconds(-1), (-1_000).microseconds());
     /// ```
@@ -743,7 +743,7 @@ impl Duration {
     /// Create a new `Duration` with the given number of microseconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::microseconds(1), 1_000.nanoseconds());
     /// assert_eq!(Duration::microseconds(-1), (-1_000).nanoseconds());
     /// ```
@@ -762,7 +762,7 @@ impl Duration {
     /// Create a new `Duration` with the given number of nanoseconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(Duration::nanoseconds(1), 1.microseconds() / 1_000);
     /// assert_eq!(Duration::nanoseconds(-1), (-1).microseconds() / 1_000);
     /// ```
@@ -780,7 +780,7 @@ impl Duration {
     /// Create a new `Duration` with the given number of nanoseconds.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(
     ///     Duration::nanoseconds_i128(1_234_567_890),
     ///     1.seconds() + 234_567_890.nanoseconds()
@@ -798,7 +798,7 @@ impl Duration {
         let nanoseconds = nanoseconds % Nanosecond::per_t::<i128>(Second);
 
         if seconds > i64::MAX as i128 || seconds < i64::MIN as i128 {
-            panic!("overflow constructing `time::Duration`");
+            panic!("overflow constructing `ai_time::Duration`");
         }
 
         // Safety: `nanoseconds` is guaranteed to be in range because of the modulus above.
@@ -808,7 +808,7 @@ impl Duration {
     /// Get the number of whole weeks in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.weeks().whole_weeks(), 1);
     /// assert_eq!((-1).weeks().whole_weeks(), -1);
     /// assert_eq!(6.days().whole_weeks(), 0);
@@ -822,7 +822,7 @@ impl Duration {
     /// Get the number of whole days in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.days().whole_days(), 1);
     /// assert_eq!((-1).days().whole_days(), -1);
     /// assert_eq!(23.hours().whole_days(), 0);
@@ -836,7 +836,7 @@ impl Duration {
     /// Get the number of whole hours in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.hours().whole_hours(), 1);
     /// assert_eq!((-1).hours().whole_hours(), -1);
     /// assert_eq!(59.minutes().whole_hours(), 0);
@@ -850,7 +850,7 @@ impl Duration {
     /// Get the number of whole minutes in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.minutes().whole_minutes(), 1);
     /// assert_eq!((-1).minutes().whole_minutes(), -1);
     /// assert_eq!(59.seconds().whole_minutes(), 0);
@@ -864,7 +864,7 @@ impl Duration {
     /// Get the number of whole seconds in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.seconds().whole_seconds(), 1);
     /// assert_eq!((-1).seconds().whole_seconds(), -1);
     /// assert_eq!(1.minutes().whole_seconds(), 60);
@@ -878,7 +878,7 @@ impl Duration {
     /// Get the number of fractional seconds in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.5.seconds().as_seconds_f64(), 1.5);
     /// assert_eq!((-1.5).seconds().as_seconds_f64(), -1.5);
     /// ```
@@ -890,7 +890,7 @@ impl Duration {
     /// Get the number of fractional seconds in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.5.seconds().as_seconds_f32(), 1.5);
     /// assert_eq!((-1.5).seconds().as_seconds_f32(), -1.5);
     /// ```
@@ -902,7 +902,7 @@ impl Duration {
     /// Get the number of whole milliseconds in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.seconds().whole_milliseconds(), 1_000);
     /// assert_eq!((-1).seconds().whole_milliseconds(), -1_000);
     /// assert_eq!(1.milliseconds().whole_milliseconds(), 1);
@@ -919,7 +919,7 @@ impl Duration {
     /// Always in the range `-999..=999`.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.4.seconds().subsec_milliseconds(), 400);
     /// assert_eq!((-1.4).seconds().subsec_milliseconds(), -400);
     /// ```
@@ -931,7 +931,7 @@ impl Duration {
     /// Get the number of whole microseconds in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.milliseconds().whole_microseconds(), 1_000);
     /// assert_eq!((-1).milliseconds().whole_microseconds(), -1_000);
     /// assert_eq!(1.microseconds().whole_microseconds(), 1);
@@ -948,7 +948,7 @@ impl Duration {
     /// Always in the range `-999_999..=999_999`.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.0004.seconds().subsec_microseconds(), 400);
     /// assert_eq!((-1.0004).seconds().subsec_microseconds(), -400);
     /// ```
@@ -960,7 +960,7 @@ impl Duration {
     /// Get the number of nanoseconds in the duration.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.microseconds().whole_nanoseconds(), 1_000);
     /// assert_eq!((-1).microseconds().whole_nanoseconds(), -1_000);
     /// assert_eq!(1.nanoseconds().whole_nanoseconds(), 1);
@@ -976,7 +976,7 @@ impl Duration {
     /// The returned value will always be in the range `-999_999_999..=999_999_999`.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(1.000_000_400.seconds().subsec_nanoseconds(), 400);
     /// assert_eq!((-1.000_000_400).seconds().subsec_nanoseconds(), -400);
     /// ```
@@ -995,7 +995,7 @@ impl Duration {
     /// Computes `self + rhs`, returning `None` if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(5.seconds().checked_add(5.seconds()), Some(10.seconds()));
     /// assert_eq!(Duration::MAX.checked_add(1.nanoseconds()), None);
     /// assert_eq!((-5).seconds().checked_add(5.seconds()), Some(0.seconds()));
@@ -1021,7 +1021,7 @@ impl Duration {
     /// Computes `self - rhs`, returning `None` if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(5.seconds().checked_sub(5.seconds()), Some(Duration::ZERO));
     /// assert_eq!(Duration::MIN.checked_sub(1.nanoseconds()), None);
     /// assert_eq!(5.seconds().checked_sub(10.seconds()), Some((-5).seconds()));
@@ -1047,7 +1047,7 @@ impl Duration {
     /// Computes `self * rhs`, returning `None` if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(5.seconds().checked_mul(2), Some(10.seconds()));
     /// assert_eq!(5.seconds().checked_mul(-2), Some((-10).seconds()));
     /// assert_eq!(5.seconds().checked_mul(0), Some(0.seconds()));
@@ -1071,7 +1071,7 @@ impl Duration {
     /// Computes `self / rhs`, returning `None` if `rhs == 0` or if the result would overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
+    /// # use ai_time::ext::NumericalDuration;
     /// assert_eq!(10.seconds().checked_div(2), Some(5.seconds()));
     /// assert_eq!(10.seconds().checked_div(-2), Some((-5).seconds()));
     /// assert_eq!(1.seconds().checked_div(0), None);
@@ -1093,8 +1093,8 @@ impl Duration {
     /// Computes `-self`, returning `None` if the result would overflow.
     ///
     /// ```rust
-    /// # use time::ext::NumericalDuration;
-    /// # use time::Duration;
+    /// # use ai_time::ext::NumericalDuration;
+    /// # use ai_time::Duration;
     /// assert_eq!(5.seconds().checked_neg(), Some((-5).seconds()));
     /// assert_eq!(Duration::MIN.checked_neg(), None);
     /// ```
@@ -1113,7 +1113,7 @@ impl Duration {
     /// Computes `self + rhs`, saturating if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(5.seconds().saturating_add(5.seconds()), 10.seconds());
     /// assert_eq!(Duration::MAX.saturating_add(1.nanoseconds()), Duration::MAX);
     /// assert_eq!(
@@ -1155,7 +1155,7 @@ impl Duration {
     /// Computes `self - rhs`, saturating if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(5.seconds().saturating_sub(5.seconds()), Duration::ZERO);
     /// assert_eq!(Duration::MIN.saturating_sub(1.nanoseconds()), Duration::MIN);
     /// assert_eq!(
@@ -1197,7 +1197,7 @@ impl Duration {
     /// Computes `self * rhs`, saturating if an overflow occurred.
     ///
     /// ```rust
-    /// # use time::{Duration, ext::NumericalDuration};
+    /// # use ai_time::{Duration, ext::NumericalDuration};
     /// assert_eq!(5.seconds().saturating_mul(2), 10.seconds());
     /// assert_eq!(5.seconds().saturating_mul(-2), (-10).seconds());
     /// assert_eq!(5.seconds().saturating_mul(0), Duration::ZERO);
@@ -1257,7 +1257,7 @@ impl Duration {
 /// For a concise, rounded printout instead, you can use the `.N` format specifier:
 ///
 /// ```
-/// # use time::Duration;
+/// # use ai_time::Duration;
 /// #
 /// let duration = Duration::new(123456, 789011223);
 /// println!("{duration:.3}");
@@ -1400,7 +1400,7 @@ impl Add<StdDuration> for Duration {
     #[track_caller]
     fn add(self, std_duration: StdDuration) -> Self::Output {
         self + Self::try_from(std_duration)
-            .expect("overflow converting `std::time::Duration` to `time::Duration`")
+            .expect("overflow converting `std::time::Duration` to `ai_time::Duration`")
     }
 }
 
@@ -1490,7 +1490,7 @@ impl Sub<StdDuration> for Duration {
     #[track_caller]
     fn sub(self, rhs: StdDuration) -> Self::Output {
         self - Self::try_from(rhs)
-            .expect("overflow converting `std::time::Duration` to `time::Duration`")
+            .expect("overflow converting `std::time::Duration` to `ai_time::Duration`")
     }
 }
 
@@ -1504,7 +1504,7 @@ impl Sub<Duration> for StdDuration {
     #[track_caller]
     fn sub(self, rhs: Duration) -> Self::Output {
         Duration::try_from(self)
-            .expect("overflow converting `std::time::Duration` to `time::Duration`")
+            .expect("overflow converting `std::time::Duration` to `ai_time::Duration`")
             - rhs
     }
 }

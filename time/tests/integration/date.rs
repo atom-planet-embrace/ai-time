@@ -1,9 +1,9 @@
 use std::cmp::Ordering;
 use std::collections::HashSet;
 
-use time::ext::{NumericalDuration, NumericalStdDuration};
-use time::macros::{date, datetime, time};
-use time::{Date, Duration, Month, Weekday, util};
+use ai_time::ext::{NumericalDuration, NumericalStdDuration};
+use ai_time::macros::{date, datetime, time};
+use ai_time::{Date, Duration, Month, Weekday, util};
 
 #[test]
 fn debug() {

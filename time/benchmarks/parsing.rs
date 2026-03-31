@@ -1,8 +1,8 @@
 use criterion::Bencher;
-use time::OffsetDateTime;
-use time::format_description::well_known::{Rfc2822, Rfc3339};
-use time::format_description::{Component, modifier};
-use time::parsing::Parsed;
+use ai_time::OffsetDateTime;
+use ai_time::format_description::well_known::{Rfc2822, Rfc3339};
+use ai_time::format_description::{Component, modifier};
+use ai_time::parsing::Parsed;
 
 macro_rules! component {
     ($name:ident {$($field:ident : $value:expr),* $(,)? }) => {{
