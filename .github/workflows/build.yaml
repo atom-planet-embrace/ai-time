@@ -341,32 +341,3 @@ jobs:
     secrets: inherit
     permissions:
       actions: write
-
-  coverage:
-    name: Coverage
-    runs-on: *default-os
-    permissions:
-      issues: write
-    if: *pr-or-push
-
-    steps:
-      - *checkout-no-persist-credentials
-      - *cache
-      - *toolchain-stable
-
-      - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@cargo-llvm-cov
-
-      - name: Generate coverage report
-        run: |
-          cargo llvm-cov clean --workspace
-          cargo llvm-cov test -p ai-time --no-report --all-features -- --test-threads=1
-          cargo llvm-cov report --lcov > lcov.txt
-        env:
-          RUSTFLAGS: --cfg __ui_tests
-
-      - name: Upload coverage report
-        uses: codecov/codecov-action@v5
-        with:
-          files: ./lcov.txt
-          token: ${{ secrets.CODECOV_TOKEN }}
