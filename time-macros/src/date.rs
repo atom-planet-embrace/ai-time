@@ -1,4 +1,4 @@
-use std::iter::Peekable;
+use core::iter::Peekable;
 
 use num_conv::Truncate;
 use proc_macro::token_stream;

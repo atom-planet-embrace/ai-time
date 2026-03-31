@@ -1,4 +1,4 @@
-use std::iter;
+use core::iter;
 
 use super::{Error, Location, Spanned, SpannedValue, Unused, lexer, unused};
 

@@ -1,4 +1,4 @@
-use std::iter::Peekable;
+use core::iter::Peekable;
 
 use proc_macro::{Span, TokenStream, token_stream};
 use ai_time_core::convert::*;

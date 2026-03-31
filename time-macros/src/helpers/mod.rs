@@ -1,8 +1,8 @@
 #[cfg(any(feature = "formatting", feature = "parsing"))]
 mod string;
 
-use std::iter::Peekable;
-use std::str::FromStr;
+use core::iter::Peekable;
+use core::str::FromStr;
 
 use num_conv::prelude::*;
 use proc_macro::{Span, TokenTree, token_stream};

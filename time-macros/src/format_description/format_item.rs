@@ -1,5 +1,5 @@
-use std::num::NonZero;
-use std::str::{self, FromStr};
+use core::num::NonZero;
+use core::str::{self, FromStr};
 
 use super::{Error, Span, Spanned, Unused, ast, unused};
 

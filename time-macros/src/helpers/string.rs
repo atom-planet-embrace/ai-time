@@ -1,4 +1,4 @@
-use std::ops::{Index, RangeFrom};
+use core::ops::{Index, RangeFrom};
 
 use proc_macro::Span;
 

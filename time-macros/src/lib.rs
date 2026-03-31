@@ -1,15 +1,11 @@
-#![allow(
-    clippy::missing_const_for_fn,
-    clippy::std_instead_of_core,
-    clippy::std_instead_of_alloc,
-    clippy::alloc_instead_of_core,
-    reason = "irrelevant for proc macros"
-)]
+#![allow(clippy::missing_const_for_fn, reason = "irrelevant for proc macros")]
 #![allow(
     clippy::missing_docs_in_private_items,
     missing_docs,
     reason = "may be removed eventually"
 )]
+
+extern crate alloc;
 
 #[allow(
     unused_macros,
@@ -39,7 +35,7 @@ mod to_tokens;
 mod utc_datetime;
 
 #[cfg(any(feature = "formatting", feature = "parsing"))]
-use std::iter::Peekable;
+use core::iter::Peekable;
 
 #[cfg(all(feature = "serde", any(feature = "formatting", feature = "parsing")))]
 use proc_macro::Delimiter;
@@ -105,7 +101,7 @@ fn parse_format_description_version<const NO_EQUALS_IS_MOD_NAME: bool>(
         Some(TokenTree::Punct(punct)) if punct.as_char() == '=' => iter.next(),
         _ if NO_EQUALS_IS_MOD_NAME => {
             // Push the `version` ident to the front of the iterator.
-            *iter = std::iter::once(version_ident)
+            *iter = core::iter::once(version_ident)
                 .chain(iter.clone())
                 .collect::<TokenStream>()
                 .into_iter()
@@ -173,7 +169,7 @@ fn parse_visibility(iter: &mut PeekableTokenStreamIter) -> Result<TokenStream, E
 
     match iter.peek().ok_or(Error::UnexpectedEndOfInput)? {
         group @ TokenTree::Group(path) if path.delimiter() == Delimiter::Parenthesis => {
-            visibility.extend(std::iter::once(group.clone()));
+            visibility.extend(core::iter::once(group.clone()));
             iter.next(); // consume parentheses and path
         }
         _ => {}

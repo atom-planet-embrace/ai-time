@@ -17,7 +17,7 @@ pub(crate) fn build(
             impl<'a> ::serde::de::Visitor<'a> for Visitor {
                 type Value = __TimeSerdeType;
 
-                fn expecting(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                fn expecting(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                     write!(
                         f,
                         concat!(
@@ -40,7 +40,7 @@ pub(crate) fn build(
             impl<'a> ::serde::de::Visitor<'a> for OptionVisitor {
                 type Value = Option<__TimeSerdeType>;
 
-                fn expecting(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                fn expecting(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
                     write!(
                         f,
                         concat!(

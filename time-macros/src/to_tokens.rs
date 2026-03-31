@@ -1,4 +1,4 @@
-use std::num::NonZero;
+use core::num::NonZero;
 
 use proc_macro::{Group, Ident, Literal, Punct, Span, TokenStream, TokenTree};
 

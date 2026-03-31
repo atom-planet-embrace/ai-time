@@ -1,5 +1,5 @@
-use std::borrow::Cow;
-use std::fmt;
+use alloc::borrow::Cow;
+use core::fmt;
 
 use proc_macro::{Delimiter, Group, Ident, Literal, Punct, Spacing, Span, TokenStream, TokenTree};
 
@@ -115,7 +115,7 @@ impl Error {
         let end = self.span_end();
         self.to_compile_error()
             .into_iter()
-            .chain(std::iter::once(
+            .chain(core::iter::once(
                 TokenTree::from(Punct::new(';', Spacing::Alone)).with_span(end),
             ))
             .collect()
