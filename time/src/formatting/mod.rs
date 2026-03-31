@@ -5,7 +5,7 @@ pub(crate) mod formattable;
 mod iso8601;
 
 use core::num::NonZero;
-use std::io;
+use no_std_io::io;
 
 use num_conv::prelude::*;
 
@@ -85,7 +85,7 @@ fn f64_10_pow_x(x: NonZero<u8>) -> f64 {
         7 => 10_000_000.,
         8 => 100_000_000.,
         9 => 1_000_000_000.,
-        x => 10_f64.powi(x.cast_signed().extend()),
+        x => libm::pow(10.0, x.cast_signed().extend::<i32>() as f64),
     }
 }
 
@@ -116,7 +116,7 @@ pub(crate) fn format_float(
             // without being overly complex.
             if digits_after_decimal.get() < 9 {
                 let trunc_num = f64_10_pow_x(digits_after_decimal);
-                value = f64::trunc(value * trunc_num) / trunc_num;
+                value = libm::trunc(value * trunc_num) / trunc_num;
             }
 
             let digits_after_decimal = digits_after_decimal.get().extend();
@@ -125,7 +125,7 @@ pub(crate) fn format_float(
             Ok(width)
         }
         None => {
-            let value = value.trunc() as u64;
+            let value = libm::trunc(value) as u64;
             let width = digits_before_decimal.extend();
             write!(output, "{value:0>width$}")?;
             Ok(width)

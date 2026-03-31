@@ -7,7 +7,7 @@ use core::fmt;
 use core::hash::{Hash, Hasher};
 use core::ops::Neg;
 #[cfg(feature = "formatting")]
-use std::io;
+use no_std_io::io;
 
 use deranged::{RangedI8, RangedI32};
 use powerfmt::ext::FormatterExt;

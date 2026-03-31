@@ -3,7 +3,7 @@
 use alloc::string::String;
 use alloc::vec::Vec;
 use core::ops::Deref;
-use std::io;
+use no_std_io::io;
 
 use num_conv::prelude::*;
 

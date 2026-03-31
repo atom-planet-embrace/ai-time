@@ -2,7 +2,7 @@
 
 use alloc::boxed::Box;
 use core::fmt;
-use std::io;
+use no_std_io::io;
 
 use crate::error;
 
@@ -85,7 +85,10 @@ impl core::error::Error for Format {
         match self {
             Self::InsufficientTypeInformation | Self::InvalidComponent(_) => None,
             Self::ComponentRange(err) => Some(&**err),
+            #[cfg(feature = "std")]
             Self::StdIo(err) => Some(err),
+            #[cfg(not(feature = "std"))]
+            Self::StdIo(_) => None,
         }
     }
 }

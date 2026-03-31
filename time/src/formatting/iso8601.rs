@@ -1,6 +1,6 @@
 //! Helpers for implementing formatting for ISO 8601.
 
-use std::io;
+use no_std_io::io;
 
 use crate::convert::*;
 use crate::error;

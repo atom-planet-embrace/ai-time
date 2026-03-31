@@ -8,7 +8,7 @@ use core::ops::{Add, AddAssign, Sub, SubAssign};
 use core::time::Duration as StdDuration;
 use core::{fmt, hint};
 #[cfg(feature = "formatting")]
-use std::io;
+use no_std_io::io;
 
 use deranged::{RangedU8, RangedU32};
 use num_conv::prelude::*;

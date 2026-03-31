@@ -6,7 +6,7 @@ use core::fmt;
 use core::ops::{Add, AddAssign, Sub, SubAssign};
 use core::time::Duration as StdDuration;
 #[cfg(feature = "formatting")]
-use std::io;
+use no_std_io::io;
 
 use deranged::RangedI64;
 use powerfmt::ext::FormatterExt as _;

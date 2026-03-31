@@ -18,7 +18,7 @@
 //!
 //!   Enables macros that provide compile-time verification of values and intuitive syntax.
 //!
-//! - `formatting` (_implicitly enables `std`_)
+//! - `formatting` (_implicitly enables `alloc`_)
 //!
 //!   Enables formatting of most structs.
 //!

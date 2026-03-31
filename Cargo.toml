@@ -19,7 +19,9 @@ time-macros = { path = "time-macros", version = "=0.2.27" }
 criterion = { version = "0.8.1", default-features = false }
 deranged = { version = "0.5.2", features = ["powerfmt"] }
 itoa = "1.0.1"
+no_std_io = { version = "0.6", default-features = false, features = ["alloc"] }
 js-sys = "0.3.58"
+libm = "0.2"
 libc = "0.2.98"
 num-conv = "0.2.0"
 num_threads = "0.1.2"

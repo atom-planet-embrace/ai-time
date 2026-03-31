@@ -32,7 +32,7 @@ bench = false
 [features]
 default = ["std"]
 alloc = ["serde_core?/alloc"]
-formatting = ["dep:itoa", "std", "time-macros?/formatting"]
+formatting = ["dep:itoa", "dep:libm", "dep:no_std_io", "alloc", "time-macros?/formatting"]
 large-dates = ["time-core/large-dates", "time-macros?/large-dates"]
 local-offset = ["std", "dep:libc", "dep:num_threads"]
 macros = ["dep:time-macros"]
@@ -45,7 +45,7 @@ serde = ["dep:serde_core", "time-macros?/serde", "deranged/serde"]
 serde-human-readable = ["serde", "formatting", "parsing"]
 # Deprecated in favor of using the relevant flags directly.
 serde-well-known = ["serde", "formatting", "parsing"]
-std = ["alloc"]
+std = ["alloc", "no_std_io?/std"]
 wasm-bindgen = ["dep:js-sys"]
 
 # If adding an optional dependency, be sure to use the `dep:` prefix above to avoid an implicit
@@ -53,6 +53,8 @@ wasm-bindgen = ["dep:js-sys"]
 [dependencies]
 deranged.workspace = true
 itoa = { workspace = true, optional = true }
+libm = { workspace = true, optional = true }
+no_std_io = { workspace = true, optional = true }
 num-conv.workspace = true
 powerfmt.workspace = true
 quickcheck = { workspace = true, optional = true }
