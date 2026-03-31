@@ -63,7 +63,6 @@ jobs:
               - wasm-bindgen
               - local-offset
               - quickcheck
-              - formatting
               - serde-human-readable
               - serde-well-known
           - name: std_no_offset
@@ -102,7 +101,7 @@ jobs:
           | jq -r '${{ matrix.kind.query }} | map("--target " + .) | join(" ")' \
           | xargs -d" " \
           cargo hack check \
-          -p time \
+          -p ai-time \
           --no-dev-deps \
           --feature-powerset \
           --optional-deps \

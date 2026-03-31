@@ -63,7 +63,6 @@ jobs:
             exclude-features:
               - std
               - wasm-bindgen
-              - formatting
               - serde-human-readable
               - serde-well-known
               - local-offset
@@ -127,7 +126,7 @@ jobs:
           | jq -r '${{ matrix.kind.query }} | map("--target " + .) | join(" ")' \
           | xargs -d" " \
           cargo hack check \
-          -p time \
+          -p ai-time \
           --no-dev-deps \
           --feature-powerset \
           --optional-deps \
@@ -149,7 +148,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Type-check benchmarks
-        run: cargo check -p time --benches --all-features
+        run: cargo check -p ai-time --benches --all-features
         env:
           RUSTFLAGS: --cfg bench
 
@@ -175,7 +174,7 @@ jobs:
           toolchain: ${{ matrix.rust.version }}
 
       - name: Test
-        run: cargo test -p time --all-features
+        run: cargo test -p ai-time --all-features
 
   test-docs:
     name: Test (docs)
@@ -188,7 +187,7 @@ jobs:
       - *toolchain-stable
       # Test with default feature set to prevent #735 from happening again.
       - name: Doc test
-        run: cargo test -p time --doc
+        run: cargo test -p ai-time --doc
 
   miri:
     name: Test (miri)
@@ -205,10 +204,33 @@ jobs:
           components: miri
 
       - name: Test
-        run: cargo miri test -p time --all-features
+        run: cargo miri test -p ai-time --all-features
         env:
           MIRIFLAGS: -Zmiri-disable-isolation -Zmiri-strict-provenance -Zmiri-symbolic-alignment-check
           QUICKCHECK_MAX_TESTS: 100
+
+  no-std:
+    name: no_std verification
+    runs-on: *default-os
+    if: *pr-or-push
+
+    steps:
+      - *checkout
+      - *cache
+
+      - name: Install toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: thumbv7m-none-eabi
+
+      - name: Build no_std (no default features)
+        run: cargo build -p ai-time --target thumbv7m-none-eabi --no-default-features
+
+      - name: Build no_std with formatting
+        run: cargo build -p ai-time --target thumbv7m-none-eabi --no-default-features --features formatting
+
+      - name: Check default features
+        run: cargo check -p ai-time
 
   cross-build:
     name: Cross-build
@@ -229,7 +251,7 @@ jobs:
 
       # We're testing the linking, so running `cargo check` is insufficient.
       - name: Cross-build tests
-        run: cargo build -p time --tests --all-features --target x86_64-pc-windows-gnu
+        run: cargo build -p ai-time --tests --all-features --target x86_64-pc-windows-gnu
 
   fmt:
     name: Formatting
@@ -312,7 +334,7 @@ jobs:
       - fmt
       - clippy
     if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.master_branch)
-    uses: time-rs/time-rs.github.io/.github/workflows/trigger-deploy.yaml@main
+    uses: atom-planet-embrace/atom-planet-embrace.github.io/.github/workflows/trigger-deploy.yaml@main
     secrets: inherit
     permissions:
       actions: write
@@ -335,7 +357,7 @@ jobs:
       - name: Generate coverage report
         run: |
           cargo llvm-cov clean --workspace
-          cargo llvm-cov test -p time --no-report --all-features -- --test-threads=1
+          cargo llvm-cov test -p ai-time --no-report --all-features -- --test-threads=1
           cargo llvm-cov report --lcov > lcov.txt
         env:
           RUSTFLAGS: --cfg __ui_tests

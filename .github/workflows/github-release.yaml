@@ -20,5 +20,5 @@ jobs:
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          body: See the [changelog](https://github.com/time-rs/time/blob/main/CHANGELOG.md) for details.
+          body: See the [changelog](https://github.com/atom-planet-embrace/time/blob/main/CHANGELOG.md) for details.
           prerelease: ${{ inputs.prerelease }}
