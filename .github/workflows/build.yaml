@@ -229,6 +229,9 @@ jobs:
       - name: Build no_std with formatting
         run: cargo build -p ai-time --target thumbv7m-none-eabi --no-default-features --features formatting
 
+      - name: Build no_std with parsing
+        run: cargo build -p ai-time --target thumbv7m-none-eabi --no-default-features --features parsing
+
       - name: Check default features
         run: cargo check -p ai-time
 
